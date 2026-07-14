@@ -3,7 +3,7 @@ const mentors = [
     name: 'Muhammed Shifan',
     image: '/mentor-1.jpg',
     description:
-      'With 4 years of experience in cryptocurrency and 2 years in Forex markets, specializes in Gold, Currency Pairs, and Bitcoin trading. Combining technical expertise with strategic insights, equips traders with data-driven approaches to navigate volatile markets.',
+      '[X years of trading experience] · [Area of expertise — e.g. Forex / Risk Management / Algo Strategy] [Short bio — background, philosophy, why they mentor at Evorise]',
   },
 
 ]
@@ -24,7 +24,7 @@ function MentorSpotlight({ mentor }) {
 
       <div className="flex flex-col justify-center bg-[#1f1f1f] px-7 py-10 text-white sm:px-10 lg:px-14 lg:py-16">
         <span className="text-sm font-extrabold uppercase tracking-[0.28em] text-teal-300">
-          Lead Mentor
+          Mentor
         </span>
         <h3 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
           {mentor.name}
@@ -48,12 +48,12 @@ function Mentors() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="mx-auto flex w-fit items-center gap-4 rounded-full bg-white/85 px-7 py-4 text-lg font-extrabold text-slate-700 shadow-xl shadow-black/10">
           <span className="h-4 w-4 rounded-full bg-teal-700" />
-          <span>Our Mentor</span>
+          <span>Mentor</span>
           <span className="h-4 w-4 rounded-full bg-teal-700" />
         </div>
 
         <h2 className="mt-10 text-center text-5xl font-extrabold leading-tight tracking-tight text-[#151515] md:text-7xl">
-          Meet Our Expert Mentor
+          Mentor
         </h2>
 
         {mentor && <MentorSpotlight mentor={mentor} />}

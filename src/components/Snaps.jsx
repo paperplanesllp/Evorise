@@ -8,7 +8,6 @@ const snaps = [
     image: '/snap-2.jpg',
     alt: 'Evorise training moment two',
     gradient: 'from-[#fff8da] via-[#eef8ff] to-[#d9f7ff]',
-    featured: true,
   },
   {
     image: '/snap-3.jpg',
@@ -50,11 +49,7 @@ function Snaps() {
           {snaps.map((snap) => (
             <article
               key={snap.image}
-              className={`overflow-hidden rounded-[24px] bg-gradient-to-br ${snap.gradient} shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${
-                snap.featured
-                  ? 'h-[380px] lg:col-span-2 lg:h-[520px]'
-                  : 'h-[320px] md:h-[380px]'
-              }`}
+              className={`h-[320px] overflow-hidden rounded-[24px] bg-gradient-to-br ${snap.gradient} shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl md:h-[380px]`}
             >
               <img
                 src={snap.image}

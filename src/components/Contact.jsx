@@ -62,6 +62,7 @@ function Contact() {
       name: formData.get('name'),
       mobile: formData.get('mobile'),
       email: formData.get('email'),
+      interest: formData.get('interest'),
       message: formData.get('message'),
     })
     alert('Message form submitted.')
@@ -69,9 +70,16 @@ function Contact() {
   }
 
   const contactInfo = [
-    { type: 'phone', label: '+91 0000000' },
+    { type: 'phone', label: '+91 ' },
     { type: 'location', label: 'Kochi, Kerala, India' },
     { type: 'email', label: 'info@evorise.com' },
+  ]
+
+  const socialLinks = [
+    { label: 'IG', href: 'https://www.instagram.com/evorise.in/' },
+    { label: 'IN', href: '' },
+    { label: 'YT', href: 'https://www.youtube.com/@theevoriseecosystem' },
+    { label: 'X', href: '' },
   ]
 
   return (
@@ -99,13 +107,16 @@ function Contact() {
             </div>
 
             <div className="mt-16 flex flex-wrap gap-4">
-              {['IG', 'FB', 'IN', 'X', 'YT'].map((item) => (
-                <span
-                  key={item}
+              {socialLinks.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href || '#contact'}
+                  target={item.href ? '_blank' : undefined}
+                  rel={item.href ? 'noreferrer' : undefined}
                   className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-sm font-extrabold text-[#0f6f78] shadow-lg"
                 >
-                  {item}
-                </span>
+                  {item.label}
+                </a>
               ))}
             </div>
           </div>
@@ -130,9 +141,13 @@ function Contact() {
             </div>
 
             <form onSubmit={handleSubmit} className="grid gap-5">
-              <h2 className="mb-4 text-4xl font-bold tracking-tight text-[#151515] md:text-5xl">
-                Send us a Message
+              <h2 className="text-4xl font-bold tracking-tight text-[#151515] md:text-5xl">
+                Let's Talk
               </h2>
+
+              <p className="mb-4 text-base leading-7 text-slate-600">
+                Whether you're just starting a forex trading course or ready to automate a working strategy, tell us where you are — we'll take it from there.
+              </p>
 
               <input
                 name="name"
@@ -155,6 +170,19 @@ function Contact() {
                 className="rounded-lg bg-[#f5f5f5] px-6 py-5 text-base text-[#151515] outline-none transition focus:ring-2 focus:ring-teal-700/30"
                 required
               />
+              <select
+                name="interest"
+                className="rounded-lg bg-[#f5f5f5] px-6 py-5 text-base text-[#151515] outline-none transition focus:ring-2 focus:ring-teal-700/30"
+                required
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  I'm interested in
+                </option>
+                <option value="Academy">Academy</option>
+                <option value="Strategy Lab">Strategy Lab</option>
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
               <textarea
                 name="message"
                 placeholder="Message"

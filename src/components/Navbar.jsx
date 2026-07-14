@@ -22,7 +22,7 @@ const contactItems = [
   },
   {
     label: 'Phone',
-    value: '+91 00000000',
+    value: '+91 ',
     icon: (
       <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9Z" />
@@ -40,7 +40,7 @@ const contactItems = [
   },
 ]
 
-const socialLinks = ['IG', 'FB', 'IN', 'X', 'YT']
+const socialLinks = ['IG', 'IN', 'YT', 'X']
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -59,7 +59,7 @@ function Navbar() {
               EVORISE
             </span>
             <span className="mt-1 block text-[10px] font-semibold tracking-[0.35em] text-black/50">
-              TRADING ACADEMY
+              FOREX ECOSYSTEM
             </span>
           </Link>
 
@@ -118,19 +118,19 @@ function Navbar() {
               EVORISE
             </span>
             <span className="mt-1 block text-[10px] font-semibold tracking-[0.35em] text-teal-600/80">
-              TRADING ACADEMY
+              FOREX ECOSYSTEM
             </span>
           </Link>
 
           <p className="mt-14 max-w-[440px] text-xl font-semibold leading-[1.65] text-white">
-            Gain expert knowledge and master forex trading with Evorise. Learn
-            proven strategies, risk management, and market analysis to trade with
-            confidence.
+            Evorise is built around forex education, strategy backtesting, and
+            trading automation for traders at different stages of the same
+            journey.
           </p>
 
           <div className="my-11 h-px w-full bg-white/15" />
 
-          <h2 className="text-2xl font-extrabold">Get In Touch</h2>
+          <h2 className="text-2xl font-extrabold">Let's Talk</h2>
 
           <div className="mt-8 space-y-7">
             {contactItems.map((item) => (

@@ -5,49 +5,31 @@ const mentors = [
     description:
       'With 4 years of experience in cryptocurrency and 2 years in Forex markets, specializes in Gold, Currency Pairs, and Bitcoin trading. Combining technical expertise with strategic insights, equips traders with data-driven approaches to navigate volatile markets.',
   },
-  {
-    name: 'Ananya',
-    image: '/mentor-2.jpg',
-    description:
-      'With 2 years of experience in Forex and the Indian market, brings a strong foundation in both technical and fundamental analysis. Specializes in developing advanced trading systems tailored to diverse market needs.',
-  },
-  {
-    name: 'Mohammed Iyas',
-    image: '/mentor-3.jpg',
-    description:
-      'A professional forex trader with over 5 years of hands-on market experience, specializing in pure price action trading. Primary focus is Gold (XAU/USD), traded with discipline, clarity, and data-driven strategies.',
-  },
-  {
-    name: 'Rahul ',
-    image: '/mentor-4.jpg',
-    description:
-      'A dedicated trading educator focused on helping beginners understand market structure, risk planning, trade psychology, and practical execution with confidence.',
-  },
-  {
-    name: 'Zaira',
-    image: '/mentor-5.jpg',
-    description:
-      'An experienced market coach guiding students through live chart analysis, strategy refinement, and disciplined trading habits for long-term consistency.',
-  },
+
 ]
 
-function MentorCard({ mentor }) {
+function MentorSpotlight({ mentor }) {
   return (
-    <article className="group overflow-hidden rounded-xl">
-      <div className="h-[520px] overflow-hidden rounded-t-xl bg-gradient-to-br from-[#090909] via-[#2b2b2b] to-[#050505]">
+    <article className="mt-20 grid lg:grid-cols-2">
+      <div className="min-h-[420px] overflow-hidden bg-gradient-to-br from-[#090909] via-[#2b2b2b] to-[#050505] lg:min-h-[560px]">
         <img
           src={mentor.image}
           alt={mentor.name}
-          className="h-full w-full object-cover grayscale transition-transform duration-500 group-hover:scale-105"
+          className="h-full w-full object-cover grayscale transition-transform duration-500 hover:scale-105"
           onError={(event) => {
             event.currentTarget.style.display = 'none'
           }}
         />
       </div>
 
-      <div className="rounded-b-xl bg-[#1f1f1f] px-7 py-8 text-center text-white">
-        <h3 className="text-3xl font-extrabold tracking-tight">{mentor.name}</h3>
-        <p className="mt-6 text-base font-medium leading-8 text-white">
+      <div className="flex flex-col justify-center bg-[#1f1f1f] px-7 py-10 text-white sm:px-10 lg:px-14 lg:py-16">
+        <span className="text-sm font-extrabold uppercase tracking-[0.28em] text-teal-300">
+          Lead Mentor
+        </span>
+        <h3 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
+          {mentor.name}
+        </h3>
+        <p className="mt-7 text-lg font-medium leading-9 text-white/90">
           {mentor.description}
         </p>
       </div>
@@ -56,8 +38,7 @@ function MentorCard({ mentor }) {
 }
 
 function Mentors() {
-  const firstRow = mentors.slice(0, 3)
-  const secondRow = mentors.slice(3)
+  const mentor = mentors[0]
 
   return (
     <section
@@ -67,25 +48,15 @@ function Mentors() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="mx-auto flex w-fit items-center gap-4 rounded-full bg-white/85 px-7 py-4 text-lg font-extrabold text-slate-700 shadow-xl shadow-black/10">
           <span className="h-4 w-4 rounded-full bg-teal-700" />
-          <span>Our Mentors</span>
+          <span>Our Mentor</span>
           <span className="h-4 w-4 rounded-full bg-teal-700" />
         </div>
 
         <h2 className="mt-10 text-center text-5xl font-extrabold leading-tight tracking-tight text-[#151515] md:text-7xl">
-          Meet Our Expert Mentors
+          Meet Our Expert Mentor
         </h2>
 
-        <div className="mt-20 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
-          {firstRow.map((mentor) => (
-            <MentorCard key={mentor.name} mentor={mentor} />
-          ))}
-        </div>
-
-        <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-2 lg:mx-auto lg:max-w-[840px]">
-          {secondRow.map((mentor) => (
-            <MentorCard key={mentor.name} mentor={mentor} />
-          ))}
-        </div>
+        {mentor && <MentorSpotlight mentor={mentor} />}
       </div>
     </section>
   )

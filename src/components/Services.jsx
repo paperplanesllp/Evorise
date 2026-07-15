@@ -5,7 +5,6 @@ const services = [
       'A forex trading academy in Kochi for anyone who wants to learn forex trading online or in person — from the fundamentals to the discipline it takes to attempt a funded trading challenge.',
     cta: 'Explore Academy',
     image: '/service-online.jpg',
-    size: 'side',
     gradient: 'from-[#f7f7f7] via-[#e8f6f3] to-[#d9d3ea]',
   },
   {
@@ -14,7 +13,6 @@ const services = [
       "For traders who already have a strategy that works. Bring it in for backtesting, get it reviewed through a strategy consultation, or have it fully built into an automated trading system — so your edge doesn't depend on you being at the screen.",
     cta: 'Explore Strategy Lab',
     image: '/service-live.jpg',
-    size: 'center',
     gradient: 'from-[#f8fbfa] via-[#d4f2ec] to-[#beb6dd]',
   },
 ]
@@ -74,65 +72,55 @@ function Services() {
           Two Pillars
         </p>
 
-        <div className="mt-16 flex flex-col items-center justify-center gap-10 lg:flex-row lg:items-end">
-          {services.map((service) => {
-            const isCenter = service.size === 'center'
-
-            return (
-              <article
-                key={service.title}
-                className={`w-full border border-black/10 bg-white p-4 shadow-sm sm:max-w-[330px] ${
-                  isCenter
-                    ? 'lg:w-[470px] lg:max-w-[470px] lg:p-5'
-                    : 'lg:mb-10 lg:w-[320px] lg:max-w-[320px]'
-                }`}
+        <div className="mx-auto mt-16 grid max-w-6xl gap-8 md:grid-cols-2 lg:gap-10">
+          {services.map((service, index) => (
+            <article
+              key={service.title}
+              className="service-animate group flex h-full flex-col border border-black/10 bg-white p-4 shadow-sm transition-all duration-500 ease-out hover:-translate-y-2 hover:border-[#0f9f8f]/35 hover:shadow-xl sm:p-5"
+              style={{ animationDelay: `${index * 120}ms` }}
+            >
+              <div
+                className={`h-[300px] overflow-hidden bg-gradient-to-br sm:h-[340px] lg:h-[380px] ${service.gradient}`}
               >
-                <div
-                  className={`overflow-hidden bg-gradient-to-br ${service.gradient} ${
-                    isCenter ? 'h-[390px] md:h-[450px]' : 'h-[270px] md:h-[320px]'
-                  }`}
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  onError={(event) => {
+                    event.currentTarget.style.display = 'none'
+                  }}
+                />
+              </div>
+
+              <div className="flex flex-1 flex-col px-4 pb-8 sm:px-6 lg:px-8 lg:pb-10">
+                <h3 className="mx-auto mt-8 min-h-[5.5rem] max-w-[24rem] text-center text-3xl font-extrabold uppercase leading-tight tracking-tight text-[#31256f] md:text-[34px]">
+                  {service.title}
+                </h3>
+
+                <p className="mt-5 flex-1 text-center text-base leading-7 text-slate-600">
+                  {service.description}
+                </p>
+
+                <button
+                  type="button"
+                  onClick={scrollToContact}
+                  className="mx-auto mt-8 flex items-center justify-center gap-3 text-sm font-medium text-black/35 transition-colors duration-300 hover:text-[#0f9f8f] md:text-base"
                 >
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="h-full w-full object-cover"
-                    onError={(event) => {
-                      event.currentTarget.style.display = 'none'
-                    }}
-                  />
-                </div>
-
-                <div className={isCenter ? 'px-8 pb-10' : 'px-6 pb-8'}>
-                  <h3
-                    className={`mx-auto mt-8 max-w-[22rem] text-center font-extrabold uppercase leading-tight tracking-tight text-[#31256f] ${
-                      isCenter
-                        ? 'text-3xl md:text-[38px]'
-                        : 'text-2xl md:text-[28px]'
-                    }`}
+                  <span>{service.cta}</span>
+                  <span
+                    aria-hidden="true"
+                    className="transition-transform duration-300 ease-out group-hover:translate-x-1"
                   >
-                    {service.title}
-                  </h3>
-
-                  <p className="mt-5 text-center text-base leading-7 text-slate-600">
-                    {service.description}
-                  </p>
-
-                  <button
-                    type="button"
-                    onClick={scrollToContact}
-                    className="mx-auto mt-8 flex items-center justify-center gap-3 text-sm font-medium text-black/35 transition-colors duration-300 hover:text-[#0f9f8f] md:text-base"
-                  >
-                    <span>{service.cta}</span>
-                    <span aria-hidden="true">→</span>
-                  </button>
-                </div>
-              </article>
-            )
-          })}
+                    →
+                  </span>
+                </button>
+              </div>
+            </article>
+          ))}
         </div>
 
         <div className="mt-20 grid gap-10 lg:grid-cols-2">
-          <div className="bg-white p-8 shadow-sm">
+          <div className="service-animate bg-white p-8 shadow-sm transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-lg">
             <h3 className="text-3xl font-extrabold leading-tight tracking-tight text-[#31256f]">
               Evorise Academy — Forex Trading Course in Kochi
             </h3>
@@ -151,7 +139,7 @@ function Services() {
             </div>
           </div>
 
-          <div className="bg-white p-8 shadow-sm">
+          <div className="service-animate bg-white p-8 shadow-sm transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-lg">
             <h3 className="text-3xl font-extrabold leading-tight tracking-tight text-[#31256f]">
               Evorise Strategy Lab — Trading Automation & Backtesting
             </h3>

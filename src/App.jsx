@@ -6,7 +6,7 @@ import Hero from './components/Hero'
 import Mentors from './components/Mentors'
 import Navbar from './components/Navbar'
 import Services from './components/Services'
-import Snaps from './components/Snaps'
+
 
 function LandingPage() {
   return (
@@ -17,7 +17,7 @@ function LandingPage() {
         <About />
         <Services />
         <Mentors />
-        <Snaps />
+       
         <Contact />
         <Footer />
       </main>

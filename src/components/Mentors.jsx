@@ -1,6 +1,6 @@
 const mentors = [
   {
-    name: 'Muhammed Shifan',
+    name: 'Gokul',
     image: '/mentor-1.jpg',
     description:
       '[X years of trading experience] · [Area of expertise — e.g. Forex / Risk Management / Algo Strategy] [Short bio — background, philosophy, why they mentor at Evorise]',
@@ -48,12 +48,12 @@ function Mentors() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="mx-auto flex w-fit items-center gap-4 rounded-full bg-white/85 px-7 py-4 text-lg font-extrabold text-slate-700 shadow-xl shadow-black/10">
           <span className="h-4 w-4 rounded-full bg-teal-700" />
-          <span>Mentor</span>
+          <span>Evorise Guide</span>
           <span className="h-4 w-4 rounded-full bg-teal-700" />
         </div>
 
         <h2 className="mt-10 text-center text-5xl font-extrabold leading-tight tracking-tight text-[#151515] md:text-7xl">
-          Mentor
+          Meet Your Mentor
         </h2>
 
         {mentor && <MentorSpotlight mentor={mentor} />}

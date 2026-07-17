@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom'
 import {
   FaInstagram,
   FaFacebookF,
-  FaTwitter,
   FaYoutube,
   FaWhatsapp,
 } from 'react-icons/fa'
+import { FaXTwitter } from 'react-icons/fa6'
 
 function Footer() {
   const scrollToSection = (id) => {
@@ -171,7 +171,7 @@ function Footer() {
               rel="noreferrer"
               className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#0f766e] transition hover:bg-[#0f766e] hover:text-white"
             >
-              <FaTwitter className="h-5 w-5" />
+              <FaXTwitter className="h-5 w-5" />
             </a>
             <a
               href="https://www.youtube.com/@evoriseecosystem"

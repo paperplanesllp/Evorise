@@ -125,9 +125,9 @@ function Contact() {
 
   const socialLinks = [
     { label: 'IG', href: 'https://www.instagram.com/evorise.in/' },
-    { label: 'IN', href: '' },
-    { label: 'YT', href: 'https://www.youtube.com/@theevoriseecosystem' },
-    { label: 'X', href: '' },
+    { label: 'FB', href: 'https://www.facebook.com/profile.php?id=61591238267194' },
+    { label: 'YT', href: 'https://www.youtube.com/@evoriseecosystem' },
+    { label: 'X', href: 'https://x.com/TheEvorise' },
   ]
 
   return (

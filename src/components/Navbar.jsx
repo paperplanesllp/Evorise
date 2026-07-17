@@ -40,7 +40,12 @@ const contactItems = [
   },
 ]
 
-const socialLinks = ['IG', 'IN', 'YT', 'X']
+const socialLinks = [
+  { label: 'IG', href: 'https://www.instagram.com/evorise.in/' },
+  { label: 'FB', href: 'https://www.facebook.com/profile.php?id=61591238267194' },
+  { label: 'YT', href: 'https://www.youtube.com/@evoriseecosystem' },
+  { label: 'X', href: 'https://x.com/TheEvorise' },
+]
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -152,14 +157,16 @@ function Navbar() {
 
           <div className="flex flex-wrap gap-5">
             {socialLinks.map((social) => (
-              <button
-                key={social}
-                type="button"
-                aria-label={social}
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={social.label}
                 className="flex h-14 w-14 items-center justify-center rounded-xl bg-white text-base font-extrabold text-teal-700 transition-all duration-300 hover:-translate-y-1 hover:bg-teal-700 hover:text-white"
               >
-                {social}
-              </button>
+                {social.label}
+              </a>
             ))}
           </div>
         </div>

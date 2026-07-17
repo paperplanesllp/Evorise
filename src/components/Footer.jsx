@@ -4,7 +4,6 @@ import {
   FaFacebookF,
   FaTwitter,
   FaYoutube,
-  FaLinkedinIn,
   FaWhatsapp,
 } from 'react-icons/fa'
 
@@ -159,7 +158,7 @@ function Footer() {
               <FaInstagram className="h-5 w-5" />
             </a>
             <a
-              href="#contact"
+              href="https://www.facebook.com/profile.php?id=61591238267194"
               target="_blank"
               rel="noreferrer"
               className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#0f766e] transition hover:bg-[#0f766e] hover:text-white"
@@ -167,7 +166,7 @@ function Footer() {
               <FaFacebookF className="h-5 w-5" />
             </a>
             <a
-              href="#contact"
+              href="https://x.com/TheEvorise"
               target="_blank"
               rel="noreferrer"
               className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#0f766e] transition hover:bg-[#0f766e] hover:text-white"
@@ -175,20 +174,12 @@ function Footer() {
               <FaTwitter className="h-5 w-5" />
             </a>
             <a
-              href="https://www.youtube.com/@theevoriseecosystem"
+              href="https://www.youtube.com/@evoriseecosystem"
               target="_blank"
               rel="noreferrer"
               className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#0f766e] transition hover:bg-[#0f766e] hover:text-white"
             >
               <FaYoutube className="h-5 w-5" />
-            </a>
-            <a
-              href="#contact"
-              target="_blank"
-              rel="noreferrer"
-              className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#0f766e] transition hover:bg-[#0f766e] hover:text-white"
-            >
-              <FaLinkedinIn className="h-5 w-5" />
             </a>
           </div>
         </div>

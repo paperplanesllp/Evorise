@@ -1,3 +1,5 @@
+import { useContactModal } from '../hooks/useContactModal'
+
 const services = [
   {
     title: 'Evorise Academy',
@@ -54,11 +56,7 @@ const strategyLabServices = [
 ]
 
 function Services() {
-  const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({
-      behavior: 'smooth',
-    })
-  }
+  const { openModal } = useContactModal()
 
   return (
     <section id="services" className="bg-[#f7f7f7] py-24 lg:py-32">
@@ -103,7 +101,7 @@ function Services() {
 
                 <button
                   type="button"
-                  onClick={scrollToContact}
+                  onClick={openModal}
                   className="mx-auto mt-8 flex items-center justify-center gap-3 text-sm font-medium text-black/35 transition-colors duration-300 hover:text-[#0f9f8f] md:text-base"
                 >
                   <span>{service.cta}</span>

@@ -1,13 +1,9 @@
-import { Link } from 'react-router-dom'
+import { useContactModal } from '../hooks/useContactModal'
 
 function Hero() {
+  const { openModal } = useContactModal()
   const outlineTextStyle = {
     WebkitTextStroke: '1.4px #111',
-  }
-
-  const scrollToSection = (id) => {
-    const section = document.querySelector(id)
-    section?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -54,16 +50,13 @@ function Hero() {
         </p>
 
         <div className="mt-14 flex justify-center">
-          <Link
-            to="/contact"
-            onClick={(e) => {
-              e.preventDefault()
-              scrollToSection('#contact')
-            }}
+          <button
+            type="button"
+            onClick={openModal}
             className="rounded-xl bg-teal-700 px-12 py-4 text-base font-extrabold uppercase tracking-[0.18em] text-white shadow-xl shadow-teal-700/20 transition-all duration-300 hover:-translate-y-1 hover:bg-teal-800"
           >
             Start Here
-          </Link>
+          </button>
         </div>
       </div>
     </section>

@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 function ContactIcon({ type }) {
   const common = 'h-6 w-6'
 
@@ -55,18 +57,65 @@ function ContactIcon({ type }) {
 }
 
 function Contact() {
-  const handleSubmit = (event) => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null) // 'success' or 'error'
+  const [statusMessage, setStatusMessage] = useState('')
+
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    const formData = new FormData(event.currentTarget)
-    console.log({
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+    setStatusMessage('')
+
+    const formElement = event.currentTarget
+    const formData = new FormData(formElement)
+
+    const payload = {
       name: formData.get('name'),
-      mobile: formData.get('mobile'),
       email: formData.get('email'),
+      phone: formData.get('mobile'),
       interest: formData.get('interest'),
       message: formData.get('message'),
-    })
-    alert('Message form submitted.')
-    event.currentTarget.reset()
+    }
+
+    try {
+      const endpoint = import.meta.env.VITE_CONTACT_FORM_ENDPOINT
+
+      if (!endpoint) {
+        throw new Error(
+          'Form submission is not configured. Please try again later or contact us directly at info@evorise.com'
+        )
+      }
+
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      })
+
+      if (!response.ok) {
+        throw new Error(`Server responded with status ${response.status}`)
+      }
+
+      setSubmitStatus('success')
+      setStatusMessage('Thank you! Your message has been sent. We'll contact you soon.')
+      formElement.reset()
+
+      // Auto-clear success message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus(null)
+        setStatusMessage('')
+      }, 5000)
+    } catch (error) {
+      setSubmitStatus('error')
+      setStatusMessage(
+        error.message || 'Something went wrong. Please try again or contact us directly.'
+      )
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const contactInfo = [
@@ -149,12 +198,25 @@ function Contact() {
                 Whether you're just starting a forex trading course or ready to automate a working strategy, tell us where you are — we'll take it from there.
               </p>
 
+              {submitStatus === 'success' && (
+                <div className="rounded-lg bg-green-50 p-4 text-green-800">
+                  {statusMessage}
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="rounded-lg bg-red-50 p-4 text-red-800">
+                  {statusMessage}
+                </div>
+              )}
+
               <input
                 name="name"
                 type="text"
                 placeholder="Name"
                 className="rounded-lg bg-[#f5f5f5] px-6 py-5 text-base text-[#151515] outline-none transition focus:ring-2 focus:ring-teal-700/30"
                 required
+                disabled={isSubmitting}
               />
               <input
                 name="mobile"
@@ -162,6 +224,7 @@ function Contact() {
                 placeholder="Mobile"
                 className="rounded-lg bg-[#f5f5f5] px-6 py-5 text-base text-[#151515] outline-none transition focus:ring-2 focus:ring-teal-700/30"
                 required
+                disabled={isSubmitting}
               />
               <input
                 name="email"
@@ -169,12 +232,14 @@ function Contact() {
                 placeholder="Email"
                 className="rounded-lg bg-[#f5f5f5] px-6 py-5 text-base text-[#151515] outline-none transition focus:ring-2 focus:ring-teal-700/30"
                 required
+                disabled={isSubmitting}
               />
               <select
                 name="interest"
                 className="rounded-lg bg-[#f5f5f5] px-6 py-5 text-base text-[#151515] outline-none transition focus:ring-2 focus:ring-teal-700/30"
                 required
                 defaultValue=""
+                disabled={isSubmitting}
               >
                 <option value="" disabled>
                   I'm interested in
@@ -188,13 +253,15 @@ function Contact() {
                 placeholder="Message"
                 className="h-[180px] resize-none rounded-lg bg-[#f5f5f5] px-6 py-5 text-base text-[#151515] outline-none transition focus:ring-2 focus:ring-teal-700/30"
                 required
+                disabled={isSubmitting}
               />
 
               <button
                 type="submit"
-                className="mt-4 w-fit rounded-xl bg-teal-800 px-10 py-6 text-base font-extrabold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-teal-900"
+                disabled={isSubmitting}
+                className="mt-4 w-fit rounded-xl bg-teal-800 px-10 py-6 text-base font-extrabold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-teal-900 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                LET'S TALK
+                {isSubmitting ? 'Sending...' : 'LET\'S TALK'}
               </button>
             </form>
           </div>

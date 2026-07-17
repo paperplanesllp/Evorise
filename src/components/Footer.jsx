@@ -107,8 +107,8 @@ function Footer() {
               </div>
               <div>
                 <p className="font-semibold text-slate-900">Email</p>
-                <a href="mailto:info@evorise.com" className="transition hover:text-teal-800">
-                  info@evorise.com
+                <a href="mailto:info@evorise.in" className="transition hover:text-teal-800">
+                  info@evorise.in
                 </a>
               </div>
               <div>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import emailjs from "@emailjs/browser";
 import { useContactModal } from '../hooks/useContactModal'
 
 const serviceOptions = [
@@ -24,9 +25,9 @@ export function ContactFormModal() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
+    mobile: '',
     company: '',
-    service: '',
+    interest: '',
     message: '',
     budget: '',
     honeypot: '',
@@ -95,14 +96,14 @@ export function ContactFormModal() {
       newErrors.email = 'Please enter a valid email address'
     }
 
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone/WhatsApp number is required'
-    } else if (!validatePhone(formData.phone)) {
-      newErrors.phone = 'Please enter a valid phone number (minimum 10 digits)'
+    if (!formData.mobile.trim()) {
+      newErrors.mobile = 'Phone/WhatsApp number is required'
+    } else if (!validatePhone(formData.mobile)) {
+      newErrors.mobile = 'Please enter a valid phone number (minimum 10 digits)'
     }
 
-    if (!formData.service.trim()) {
-      newErrors.service = 'Service required is required'
+    if (!formData.interest.trim()) {
+      newErrors.interest = 'Service required is required'
     }
 
     if (!formData.message.trim()) {
@@ -134,6 +135,8 @@ export function ContactFormModal() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (isSubmitting) return
+
     setSubmitStatus(null)
 
     const validation = validateForm()
@@ -150,43 +153,37 @@ export function ContactFormModal() {
     setIsSubmitting(true)
 
     try {
-      const endpoint = import.meta.env.VITE_CONTACT_FORM_ENDPOINT
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
-      if (!endpoint) {
-        throw new Error(
-          'Form endpoint not configured. Please check VITE_CONTACT_FORM_ENDPOINT in your environment variables.'
-        )
+      if (!serviceId || !templateId || !publicKey) {
+        setSubmitStatus('error')
+        return
       }
 
-      const payload = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        company: formData.company || null,
-        service: formData.service,
-        message: formData.message,
-        budget: formData.budget || null,
-      }
-
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          mobile: formData.mobile.trim(),
+          interest: formData.interest,
+          message: formData.message.trim()
         },
-        body: JSON.stringify(payload),
-      })
-
-      if (!response.ok) {
-        throw new Error(`Server responded with status ${response.status}`)
-      }
+        {
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        }
+      );
 
       setSubmitStatus('success')
       setFormData({
         name: '',
         email: '',
-        phone: '',
+        mobile: '',
         company: '',
-        service: '',
+        interest: '',
         message: '',
         budget: '',
         honeypot: '',
@@ -198,8 +195,7 @@ export function ContactFormModal() {
         closeModal()
         setSubmitStatus(null)
       }, 3000)
-    } catch (error) {
-      console.error('Form submission error:', error)
+    } catch {
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
@@ -246,7 +242,7 @@ export function ContactFormModal() {
               </div>
               <h3 className="text-2xl font-bold text-slate-900">Thank You!</h3>
               <p className="mt-4 max-w-sm text-lg leading-7 text-slate-600">
-                Your details have been submitted. We'll contact you soon.
+                Thank you! Your details have been submitted. We’ll contact you soon.
               </p>
               <p className="mt-2 text-sm text-slate-500">
                 Closing in a moment...
@@ -341,19 +337,19 @@ export function ContactFormModal() {
                   <input
                     id="phone"
                     type="tel"
-                    name="phone"
-                    value={formData.phone}
+                    name="mobile"
+                    value={formData.mobile}
                     onChange={handleChange}
                     placeholder="+91 90370 71916"
                     className={`mt-2 w-full rounded-lg border px-4 py-3 text-slate-900 placeholder-slate-400 outline-none transition ${
-                      errors.phone
+                      errors.mobile
                         ? 'border-red-500 focus:ring-2 focus:ring-red-200'
                         : 'border-slate-300 focus:ring-2 focus:ring-teal-200'
                     }`}
                     required
                   />
-                  {errors.phone && (
-                    <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+                  {errors.mobile && (
+                    <p className="mt-1 text-sm text-red-600">{errors.mobile}</p>
                   )}
                 </div>
 
@@ -386,11 +382,11 @@ export function ContactFormModal() {
                   </label>
                   <select
                     id="service"
-                    name="service"
-                    value={formData.service}
+                    name="interest"
+                    value={formData.interest}
                     onChange={handleChange}
                     className={`mt-2 w-full rounded-lg border px-4 py-3 text-slate-900 outline-none transition ${
-                      errors.service
+                      errors.interest
                         ? 'border-red-500 focus:ring-2 focus:ring-red-200'
                         : 'border-slate-300 focus:ring-2 focus:ring-teal-200'
                     }`}
@@ -403,8 +399,8 @@ export function ContactFormModal() {
                       </option>
                     ))}
                   </select>
-                  {errors.service && (
-                    <p className="mt-1 text-sm text-red-600">{errors.service}</p>
+                  {errors.interest && (
+                    <p className="mt-1 text-sm text-red-600">{errors.interest}</p>
                   )}
                 </div>
 
@@ -463,8 +459,8 @@ export function ContactFormModal() {
                 {submitStatus === 'error' && (
                   <div className="rounded-lg bg-red-50 p-4">
                     <p className="text-sm text-red-800">
-                      Something went wrong. Please try again or contact us
-                      directly at info@evorise.com
+                      Something went wrong. Please try again or email us at
+                      info@evorise.com.
                     </p>
                   </div>
                 )}

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import emailjs from "@emailjs/browser";
 
 function ContactIcon({ type }) {
   const common = 'h-6 w-6'
@@ -63,56 +64,54 @@ function Contact() {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    if (isSubmitting) return
+
     setIsSubmitting(true)
     setSubmitStatus(null)
     setStatusMessage('')
 
     const formElement = event.currentTarget
-    const formData = new FormData(formElement)
+    const formValues = new FormData(formElement)
 
-    const payload = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      phone: formData.get('mobile'),
-      interest: formData.get('interest'),
-      message: formData.get('message'),
+    const formData = {
+      name: formValues.get('name') || '',
+      email: formValues.get('email') || '',
+      mobile: formValues.get('mobile') || '',
+      interest: formValues.get('interest') || '',
+      message: formValues.get('message') || '',
     }
 
     try {
-      const endpoint = import.meta.env.VITE_CONTACT_FORM_ENDPOINT
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
-      if (!endpoint) {
-        throw new Error(
-          'Form submission is not configured. Please try again later or contact us directly at info@evorise.com'
-        )
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('EmailJS environment variables are missing.')
       }
 
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          mobile: formData.mobile.trim(),
+          interest: formData.interest,
+          message: formData.message.trim(),
         },
-        body: JSON.stringify(payload),
-      })
-
-      if (!response.ok) {
-        throw new Error(`Server responded with status ${response.status}`)
-      }
+        {
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+        }
+      )
 
       setSubmitStatus('success')
-      setStatusMessage('Thank you! Your message has been sent. We'll contact you soon.')
+      setStatusMessage('Thank you! Your enquiry has been submitted successfully.')
       formElement.reset()
-
-      // Auto-clear success message after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus(null)
-        setStatusMessage('')
-      }, 5000)
     } catch (error) {
+      console.error('EmailJS submission failed:', error)
       setSubmitStatus('error')
-      setStatusMessage(
-        error.message || 'Something went wrong. Please try again or contact us directly.'
-      )
+      setStatusMessage('Something went wrong. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
@@ -121,7 +120,7 @@ function Contact() {
   const contactInfo = [
     { type: 'phone', label: ' +91 90370 71916 ' },
     { type: 'location', label: 'Kochi, Kerala, India' },
-    { type: 'email', label: 'info@evorise.com' },
+    { type: 'email', label: 'info@evorise.in' },
   ]
 
   const socialLinks = [

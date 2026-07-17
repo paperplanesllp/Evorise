@@ -12,7 +12,7 @@ const navLinks = [
 const contactItems = [
   {
     label: 'Email',
-    value: 'info@evorise.com',
+    value: 'info@evorise.in',
     icon: (
       <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M4 6h16v12H4z" />

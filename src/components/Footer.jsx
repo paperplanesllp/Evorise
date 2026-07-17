@@ -114,7 +114,8 @@ function Footer() {
               <div>
                 <p className="font-semibold text-slate-900">Phone</p>
                 <a href="#contact" className="transition hover:text-teal-800">
-                  +91
+                   +91 90370 71916
+
                 </a>
               </div>
             </div>

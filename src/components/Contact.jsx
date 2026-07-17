@@ -70,7 +70,7 @@ function Contact() {
   }
 
   const contactInfo = [
-    { type: 'phone', label: '+91 ' },
+    { type: 'phone', label: ' +91 90370 71916 ' },
     { type: 'location', label: 'Kochi, Kerala, India' },
     { type: 'email', label: 'info@evorise.com' },
   ]

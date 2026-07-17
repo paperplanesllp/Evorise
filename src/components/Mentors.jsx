@@ -5,7 +5,7 @@ const mentors = [
     name: 'Gokul V.S',
     image: gokulImage,
     description:
-      '[X years of trading experience] · [Area of expertise — e.g. Forex / Risk Management / Algo Strategy] [Short bio — background, philosophy, why they mentor at Evorise]',
+      'Guided by mentor Gokul V S, a Financial Educator with strong expertise in research & development, investments, and market analysis, Evorise Academy delivers structured learning for every stage of the trading journey — from complete beginners to advanced traders. Our approach combines quality educational content, live market insights, and continuous learner support, helping traders build the discipline and market understanding to make informed decisions around risk, strategy, and long-term growth. Known for a practical, research-backed teaching style, Gokul helps learners build sound trading habits, avoid common mistakes, and approach the markets with clarity and confidence.',
   },
 
 ]

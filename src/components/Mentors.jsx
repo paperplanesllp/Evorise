@@ -1,7 +1,9 @@
+import gokulImage from '../assets/Gokul.jpeg'
+
 const mentors = [
   {
     name: 'Gokul',
-    image: '/mentor-1.jpg',
+    image: gokulImage,
     description:
       '[X years of trading experience] · [Area of expertise — e.g. Forex / Risk Management / Algo Strategy] [Short bio — background, philosophy, why they mentor at Evorise]',
   },

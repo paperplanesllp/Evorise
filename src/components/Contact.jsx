@@ -1,66 +1,111 @@
 import { useState } from 'react'
-import emailjs from "@emailjs/browser";
+import emailjs from '@emailjs/browser'
+
+const fieldClass =
+  'h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-teal-700 focus:ring-4 focus:ring-teal-700/10 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-500'
 
 function ContactIcon({ type }) {
-  const common = 'h-6 w-6'
+  const commonProps = {
+    className: 'h-5 w-5',
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 1.8,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    'aria-hidden': true,
+  }
 
   if (type === 'phone') {
     return (
-      <svg className={common} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path
-          d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.6.6 4 .6.7 0 1.2.5 1.2 1.2v3.5c0 .7-.5 1.2-1.2 1.2C10.6 21.4 2.6 13.4 2.6 3.4c0-.7.5-1.2 1.2-1.2h3.5c.7 0 1.2.5 1.2 1.2 0 1.4.2 2.7.6 4 .1.4 0 .9-.3 1.2l-2.2 2.2Z"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+      <svg {...commonProps}>
+        <path d="M8.2 3.5 10.3 8l-2.2 1.7a15 15 0 0 0 6.2 6.2l1.7-2.2 4.5 2.1-.8 3.1a2 2 0 0 1-2 1.6C9.9 20.5 3.5 14.1 3.5 6.3a2 2 0 0 1 1.6-2l3.1-.8Z" />
       </svg>
     )
   }
 
   if (type === 'location') {
     return (
-      <svg className={common} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path
-          d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
-          stroke="currentColor"
-          strokeWidth="1.8"
-        />
+      <svg {...commonProps}>
+        <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" />
+        <circle cx="12" cy="10" r="2.5" />
       </svg>
     )
   }
 
   return (
-    <svg className={common} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M4 6.5h16v11H4v-11Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="m4 7 8 6 8-6"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+    <svg {...commonProps}>
+      <path d="M4 6.5h16v11H4z" />
+      <path d="m4.5 7 7.5 6 7.5-6" />
+    </svg>
+  )
+}
+
+function CheckIcon() {
+  return (
+    <svg
+      className="h-4 w-4"
+      viewBox="0 0 20 20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden="true"
+    >
+      <path d="m4 10 4 4 8-8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function ArrowIcon() {
+  return (
+    <svg
+      className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+      viewBox="0 0 20 20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      aria-hidden="true"
+    >
+      <path d="M4 10h12M11 5l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
 
 function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState(null) // 'success' or 'error'
+  const [submitStatus, setSubmitStatus] = useState(null)
   const [statusMessage, setStatusMessage] = useState('')
+
+  const contactInfo = [
+    {
+      type: 'phone',
+      title: 'Phone / WhatsApp',
+      label: '+91 90370 71916',
+      href: 'tel:+919037071916',
+    },
+    {
+      type: 'email',
+      title: 'Email',
+      label: 'info@evorise.in',
+      href: 'mailto:info@evorise.in',
+    },
+    {
+      type: 'location',
+      title: 'Location',
+      label: 'Kochi, Kerala, India',
+    },
+  ]
+
+  const socialLinks = [
+    { label: 'Instagram', shortLabel: 'IG', href: 'https://www.instagram.com/evorise.in/' },
+    {
+      label: 'Facebook',
+      shortLabel: 'FB',
+      href: 'https://www.facebook.com/profile.php?id=61591238267194',
+    },
+    { label: 'YouTube', shortLabel: 'YT', href: 'https://www.youtube.com/@evoriseecosystem' },
+    { label: 'X', shortLabel: 'X', href: 'https://x.com/TheEvorise' },
+  ]
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -74,11 +119,11 @@ function Contact() {
     const formValues = new FormData(formElement)
 
     const formData = {
-      name: formValues.get('name') || '',
-      email: formValues.get('email') || '',
-      mobile: formValues.get('mobile') || '',
-      interest: formValues.get('interest') || '',
-      message: formValues.get('message') || '',
+      name: String(formValues.get('name') || '').trim(),
+      email: String(formValues.get('email') || '').trim(),
+      mobile: String(formValues.get('mobile') || '').trim(),
+      interest: String(formValues.get('interest') || '').trim(),
+      message: String(formValues.get('message') || '').trim(),
     }
 
     try {
@@ -91,18 +136,16 @@ function Contact() {
       }
 
       await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        serviceId,
+        templateId,
         {
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          mobile: formData.mobile.trim(),
+          name: formData.name,
+          email: formData.email,
+          mobile: formData.mobile,
           interest: formData.interest,
-          message: formData.message.trim(),
+          message: formData.message,
         },
-        {
-          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-        }
+        { publicKey },
       )
 
       setSubmitStatus('success')
@@ -111,157 +154,271 @@ function Contact() {
     } catch (error) {
       console.error('EmailJS submission failed:', error)
       setSubmitStatus('error')
-      setStatusMessage('Something went wrong. Please try again.')
+      setStatusMessage('Unable to send your enquiry right now. Please try again or contact us directly.')
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  const contactInfo = [
-    { type: 'phone', label: ' +91 90370 71916 ' },
-    { type: 'location', label: 'Kochi, Kerala, India' },
-    { type: 'email', label: 'info@evorise.in' },
-  ]
-
-  const socialLinks = [
-    { label: 'IG', href: 'https://www.instagram.com/evorise.in/' },
-    { label: 'FB', href: 'https://www.facebook.com/profile.php?id=61591238267194' },
-    { label: 'YT', href: 'https://www.youtube.com/@evoriseecosystem' },
-    { label: 'X', href: 'https://x.com/TheEvorise' },
-  ]
-
   return (
-    <section id="contact" className="bg-white py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="relative lg:py-10">
-          <div className="relative z-20 flex min-h-[650px] w-full flex-col justify-between bg-[#0f6f78] px-8 py-12 text-white shadow-2xl shadow-teal-900/20 sm:px-12 lg:absolute lg:left-0 lg:top-0 lg:h-[650px] lg:w-[430px] lg:rounded-bl-none lg:rounded-r-none lg:rounded-tl-[24px] lg:px-[60px] lg:py-[60px]">
-            <div>
-              <h2 className="text-4xl font-bold tracking-tight">
-                Contact Directly
-              </h2>
+    <section id="contact" className="overflow-hidden bg-slate-50 py-10 sm:py-20 lg:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto mb-7 max-w-3xl text-center sm:mb-12">
+          <p className="text-xs font-bold uppercase tracking-[0.24em] text-teal-700">
+            Contact Evorise
+          </p>
+          <h2 className="mt-2 text-[30px] font-bold leading-[1.15] tracking-tight text-slate-950 sm:mt-3 sm:text-4xl lg:text-5xl">
+            Let&apos;s turn your next idea into a clear plan.
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-pretty text-[15px] leading-6 text-slate-600 sm:mt-4 sm:text-base sm:leading-7">
+            Tell us where you are in your trading journey, and we&apos;ll guide you toward the right next step.
+          </p>
+        </div>
 
-              <div className="mt-16 space-y-10">
-                {contactInfo.map((item) => (
-                  <div key={item.type} className="flex items-center gap-5">
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
-                      <ContactIcon type={item.type} />
-                    </span>
-                    <span className="text-lg font-semibold leading-7">
-                      {item.label}
-                    </span>
-                  </div>
-                ))}
+        <div className="grid overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.10)] lg:grid-cols-[0.82fr_1.18fr] lg:rounded-3xl">
+          <aside className="relative hidden bg-teal-900 px-5 py-7 text-white sm:px-8 sm:py-9 lg:block lg:px-10 lg:py-11">
+            <div className="relative z-10 flex h-full flex-col">
+              <div>
+                <p className="text-sm font-semibold text-teal-200">Start a conversation</p>
+                <h3 className="mt-2 max-w-md text-2xl font-bold leading-tight sm:text-3xl">
+                  Friendly guidance. Practical answers. No unnecessary complexity.
+                </h3>
+                <p className="mt-3 max-w-md text-sm leading-6 text-teal-50/80">
+                  Reach out directly or complete the enquiry form. Our team will respond with the most useful next step for you.
+                </p>
+              </div>
+
+              <div className="mt-7 grid gap-3 sm:grid-cols-3 lg:mt-9 lg:grid-cols-1">
+                {contactInfo.map((item) => {
+                  const content = (
+                    <>
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 text-teal-100">
+                        <ContactIcon type={item.type} />
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block text-xs font-medium text-white/60">{item.title}</span>
+                        <span className="mt-0.5 block break-words text-sm font-semibold text-white">
+                          {item.label}
+                        </span>
+                      </span>
+                    </>
+                  )
+
+                  if (item.href) {
+                    return (
+                      <a
+                        key={item.type}
+                        href={item.href}
+                        className="flex min-w-0 items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3 transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                      >
+                        {content}
+                      </a>
+                    )
+                  }
+
+                  return (
+                    <div
+                      key={item.type}
+                      className="flex min-w-0 items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3"
+                    >
+                      {content}
+                    </div>
+                  )
+                })}
+              </div>
+
+              <div className="mt-7 border-t border-white/10 pt-6 lg:mt-auto">
+                
+
+                <div className="mt-6 flex flex-wrap gap-2.5">
+                  {socialLinks.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Evorise on ${item.label}`}
+                      className="flex h-10 min-w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 px-3 text-xs font-bold text-white transition hover:bg-white hover:text-teal-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                    >
+                      {item.shortLabel}
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
+          </aside>
 
-            <div className="mt-16 flex flex-wrap gap-4">
-              {socialLinks.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href || '#contact'}
-                  target={item.href ? '_blank' : undefined}
-                  rel={item.href ? 'noreferrer' : undefined}
-                  className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-sm font-extrabold text-[#0f6f78] shadow-lg"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div className="relative mt-8 border border-teal-700 bg-white px-6 py-10 shadow-xl sm:px-10 lg:mt-0 lg:min-h-[690px] lg:pl-[520px] lg:pr-16 lg:pt-16">
-            <div className="absolute left-1/2 top-1/2 z-30 hidden h-14 w-14 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full shadow-md lg:left-[430px] lg:flex">
-              <span className="flex h-full w-1/2 items-center justify-end bg-white pr-0.5 text-base font-extrabold text-black">
-                O
-              </span>
-              <span className="flex h-full w-1/2 items-center justify-start bg-black pl-0.5 text-base font-extrabold text-white">
-                R
-              </span>
-            </div>
-
-            <div className="mx-auto mb-8 flex h-14 w-14 overflow-hidden rounded-full shadow-md lg:hidden">
-              <span className="flex h-full w-1/2 items-center justify-end bg-white pr-0.5 text-sm font-extrabold text-black">
-                O
-              </span>
-              <span className="flex h-full w-1/2 items-center justify-start bg-black pl-0.5 text-sm font-extrabold text-white">
-                R
-              </span>
-            </div>
-
-            <form onSubmit={handleSubmit} className="grid gap-5">
-              <h2 className="text-4xl font-bold tracking-tight text-[#151515] md:text-5xl">
-                Let's Talk
-              </h2>
-
-              <p className="mb-4 text-base leading-7 text-slate-600">
-                Whether you're just starting a forex trading course or ready to automate a working strategy, tell us where you are — we'll take it from there.
+          <div className="bg-white px-5 py-7 sm:px-8 sm:py-9 lg:px-10 lg:py-11">
+            <div className="max-w-2xl">
+              <p className="text-sm font-semibold text-teal-700">Tell us about your goals</p>
+              <h3 className="mt-1 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
+                Send an enquiry
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-slate-600">
+                Complete the form below and we&apos;ll get back to you as soon as possible.
               </p>
+            </div>
 
-              {submitStatus === 'success' && (
-                <div className="rounded-lg bg-green-50 p-4 text-green-800">
-                  {statusMessage}
+            <form onSubmit={handleSubmit} className="mt-6" noValidate>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="contact-name" className="text-sm font-semibold text-slate-700">
+                    Full name <span className="text-red-600">*</span>
+                  </label>
+                  <input
+                    id="contact-name"
+                    name="name"
+                    type="text"
+                    autoComplete="name"
+                    placeholder="Your full name"
+                    className={`${fieldClass} mt-1.5`}
+                    required
+                    disabled={isSubmitting}
+                  />
                 </div>
-              )}
 
-              {submitStatus === 'error' && (
-                <div className="rounded-lg bg-red-50 p-4 text-red-800">
-                  {statusMessage}
+                <div>
+                  <label htmlFor="contact-email" className="text-sm font-semibold text-slate-700">
+                    Email address <span className="text-red-600">*</span>
+                  </label>
+                  <input
+                    id="contact-email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    placeholder="you@example.com"
+                    className={`${fieldClass} mt-1.5`}
+                    required
+                    disabled={isSubmitting}
+                  />
                 </div>
-              )}
 
-              <input
-                name="name"
-                type="text"
-                placeholder="Name"
-                className="rounded-lg bg-[#f5f5f5] px-6 py-5 text-base text-[#151515] outline-none transition focus:ring-2 focus:ring-teal-700/30"
-                required
-                disabled={isSubmitting}
-              />
-              <input
-                name="mobile"
-                type="tel"
-                placeholder="Mobile"
-                className="rounded-lg bg-[#f5f5f5] px-6 py-5 text-base text-[#151515] outline-none transition focus:ring-2 focus:ring-teal-700/30"
-                required
-                disabled={isSubmitting}
-              />
-              <input
-                name="email"
-                type="email"
-                placeholder="Email"
-                className="rounded-lg bg-[#f5f5f5] px-6 py-5 text-base text-[#151515] outline-none transition focus:ring-2 focus:ring-teal-700/30"
-                required
-                disabled={isSubmitting}
-              />
-              <select
-                name="interest"
-                className="rounded-lg bg-[#f5f5f5] px-6 py-5 text-base text-[#151515] outline-none transition focus:ring-2 focus:ring-teal-700/30"
-                required
-                defaultValue=""
-                disabled={isSubmitting}
-              >
-                <option value="" disabled>
-                  I'm interested in
-                </option>
-                <option value="Academy">Academy</option>
-                <option value="Strategy Lab">Strategy Lab</option>
-                <option value="Not sure yet">Not sure yet</option>
-              </select>
-              <textarea
-                name="message"
-                placeholder="Message"
-                className="h-[180px] resize-none rounded-lg bg-[#f5f5f5] px-6 py-5 text-base text-[#151515] outline-none transition focus:ring-2 focus:ring-teal-700/30"
-                required
-                disabled={isSubmitting}
-              />
+                <div>
+                  <label htmlFor="contact-mobile" className="text-sm font-semibold text-slate-700">
+                    Phone / WhatsApp <span className="text-red-600">*</span>
+                  </label>
+                  <input
+                    id="contact-mobile"
+                    name="mobile"
+                    type="tel"
+                    inputMode="tel"
+                    autoComplete="tel"
+                    placeholder="+91 90370 71916"
+                    className={`${fieldClass} mt-1.5`}
+                    required
+                    disabled={isSubmitting}
+                  />
+                </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="mt-4 w-fit rounded-xl bg-teal-800 px-10 py-6 text-base font-extrabold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-teal-900 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? 'Sending...' : 'LET\'S TALK'}
-              </button>
+                <div>
+                  <label htmlFor="contact-interest" className="text-sm font-semibold text-slate-700">
+                    I&apos;m interested in <span className="text-red-600">*</span>
+                  </label>
+                  <select
+                    id="contact-interest"
+                    name="interest"
+                    className={`${fieldClass} mt-1.5`}
+                    required
+                    defaultValue=""
+                    disabled={isSubmitting}
+                  >
+                    <option value="" disabled>
+                      Select an option
+                    </option>
+                    <option value="Academy">Academy</option>
+                    <option value="Strategy Lab">Strategy Lab</option>
+                    <option value="Not sure yet">Not sure yet</option>
+                  </select>
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label htmlFor="contact-message" className="text-sm font-semibold text-slate-700">
+                    Message <span className="text-red-600">*</span>
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    rows={4}
+                    placeholder="Tell us about your goals, experience level or questions..."
+                    className="mt-1.5 min-h-28 w-full resize-y rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-teal-700 focus:ring-4 focus:ring-teal-700/10 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-500"
+                    required
+                    disabled={isSubmitting}
+                  />
+                </div>
+              </div>
+
+              <div aria-live="polite" className="mt-4">
+                {submitStatus === 'success' && (
+                  <div
+                    role="status"
+                    className="flex items-start gap-3 rounded-xl border border-teal-200 bg-teal-50 p-3.5 text-sm text-teal-900"
+                  >
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal-700 text-white">
+                      <CheckIcon />
+                    </span>
+                    <span>{statusMessage}</span>
+                  </div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <div
+                    role="alert"
+                    className="rounded-xl border border-red-200 bg-red-50 p-3.5 text-sm leading-6 text-red-900"
+                  >
+                    {statusMessage}{' '}
+                    <a
+                      href="mailto:info@evorise.in"
+                      className="font-semibold underline underline-offset-2"
+                    >
+                      info@evorise.in
+                    </a>
+                  </div>
+                )}
+              </div>
+
+              <div className="mt-5 flex flex-col gap-4 border-t border-slate-200 pt-5 sm:flex-row sm:items-center sm:justify-between">
+                <p className="max-w-sm text-xs leading-5 text-slate-500">
+                  By submitting, you agree to be contacted about your enquiry.
+                </p>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="group inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-slate-950 px-6 text-sm font-semibold text-white transition hover:bg-teal-800 focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <svg
+                        className="h-4 w-4 animate-spin"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="9"
+                          stroke="currentColor"
+                          strokeWidth="3"
+                          opacity="0.25"
+                        />
+                        <path
+                          d="M21 12a9 9 0 0 0-9-9"
+                          stroke="currentColor"
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send enquiry
+                      <ArrowIcon />
+                    </>
+                  )}
+                </button>
+              </div>
             </form>
           </div>
         </div>

@@ -12,8 +12,8 @@ const mentors = [
 
 function MentorSpotlight({ mentor }) {
   return (
-    <article className="mt-20 grid lg:grid-cols-2">
-      <div className="min-h-[420px] overflow-hidden bg-gradient-to-br from-[#090909] via-[#2b2b2b] to-[#050505] lg:min-h-[560px]">
+    <article className="-mx-6 mt-14 grid overflow-hidden border-y border-black/10 bg-[#151515] shadow-xl shadow-black/10 sm:mx-0 sm:mt-16 sm:rounded-3xl sm:border lg:grid-cols-2">
+      <div className="h-[300px] overflow-hidden bg-[#151515] sm:h-[420px] lg:h-auto lg:min-h-[600px]">
         <img
           src={mentor.image}
           alt={mentor.name}
@@ -24,14 +24,14 @@ function MentorSpotlight({ mentor }) {
         />
       </div>
 
-      <div className="flex flex-col justify-center bg-[#1f1f1f] px-7 py-10 text-white sm:px-10 lg:px-14 lg:py-16">
-        <span className="text-sm font-extrabold uppercase tracking-[0.28em] text-teal-300">
+      <div className="flex flex-col justify-center bg-[#1f1f1f] px-5 py-7 text-white sm:px-10 sm:py-10 lg:px-14 lg:py-16">
+        <span className="text-xs font-extrabold uppercase tracking-[0.24em] text-teal-300 sm:text-sm sm:tracking-[0.28em]">
           Mentor
         </span>
-        <h3 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
+        <h3 className="mt-3 text-[32px] font-extrabold leading-tight tracking-tight sm:mt-5 sm:text-4xl md:text-5xl">
           {mentor.name}
         </h3>
-        <p className="mt-7 text-lg font-medium leading-9 text-white/90">
+        <p className="mt-5 text-[15px] font-medium leading-6 text-white/90 sm:mt-7 sm:text-lg sm:leading-9">
           {mentor.description}
         </p>
       </div>
@@ -45,7 +45,7 @@ function Mentors() {
   return (
     <section
       id="mentors"
-      className="bg-[radial-gradient(circle_at_left,#ffe2eb_0%,transparent_28%),radial-gradient(circle_at_center,#d9f7ff_0%,transparent_35%),radial-gradient(circle_at_right,#fff3b8_0%,transparent_30%),linear-gradient(135deg,#fff7fa_0%,#eef8ff_45%,#f8fff1_100%)] py-24 lg:py-32"
+      className="bg-[#f4fbf9] py-20 lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="mx-auto flex w-fit items-center gap-4 rounded-full bg-white/85 px-7 py-4 text-lg font-extrabold text-slate-700 shadow-xl shadow-black/10">
@@ -54,7 +54,7 @@ function Mentors() {
           <span className="h-4 w-4 rounded-full bg-teal-700" />
         </div>
 
-        <h2 className="mt-10 text-center text-5xl font-extrabold leading-tight tracking-tight text-[#151515] md:text-7xl">
+        <h2 className="mt-7 text-center text-4xl font-extrabold leading-tight tracking-tight text-[#151515] sm:text-5xl md:text-7xl">
           Meet Your Mentor
         </h2>
 

@@ -291,15 +291,14 @@ function Footer() {
     { label: 'About', to: '/#about' },
     { label: 'Services', to: '/#services' },
     { label: 'Mentors', to: '/#mentors' },
-    { label: 'Stories', to: '/#snaps' },
     { label: 'Contact', to: '/#contact' },
   ]
 
   return (
-    <footer className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,#d9f7e5_0%,transparent_32%),radial-gradient(circle_at_top_right,#f7e1ff_0%,transparent_28%),linear-gradient(135deg,#f8fff9_0%,#fff8ef_45%,#f8f7ff_100%)] px-6 py-16 lg:px-10">
+    <footer className="relative overflow-hidden bg-[#f4fbf9] px-4 py-8 sm:px-6 sm:py-16 lg:px-10">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-10 rounded-[32px] border border-slate-300/40 bg-white/80 p-8 shadow-2xl shadow-slate-200/70 backdrop-blur-xl lg:grid-cols-[1.9fr_0.85fr_0.85fr_1.1fr] lg:p-12">
-          <div className="space-y-6">
+        <div className="grid grid-cols-2 items-start gap-x-5 gap-y-8 rounded-2xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-200/60 sm:gap-x-8 sm:gap-y-10 sm:rounded-[32px] sm:p-8 md:grid-cols-2 lg:p-10 xl:grid-cols-[1.6fr_0.8fr_0.65fr_1.1fr] xl:gap-10 xl:p-12">
+          <div className="col-span-2 space-y-4 sm:space-y-5 md:col-span-2 xl:col-span-1">
             <div>
               <p className="text-3xl font-extrabold tracking-tight text-slate-950">EVORISE</p>
               <p className="mt-2 text-sm font-semibold uppercase tracking-[0.35em] text-teal-700">
@@ -316,7 +315,7 @@ function Footer() {
 
           <div>
             <h3 className="text-xl font-bold text-slate-950">Quick Links</h3>
-            <div className="mt-6 grid gap-3 text-sm text-slate-600 sm:grid-cols-2">
+            <div className="mt-4 grid gap-2.5 text-sm leading-6 text-slate-600 sm:mt-5 sm:grid-cols-2 sm:gap-3 md:grid-cols-1">
               {quickLinks.map((link) => (
                 link.action === 'privacy' || link.action === 'terms' ? (
                   <button
@@ -348,7 +347,7 @@ function Footer() {
 
           <div>
             <h3 className="text-xl font-bold text-slate-950">Pages</h3>
-            <div className="mt-6 grid gap-3 text-sm text-slate-600">
+            <div className="mt-4 grid gap-2.5 text-sm leading-6 text-slate-600 sm:mt-5 sm:gap-3">
               {pageLinks.map((link) => (
                 <Link
                   key={link.label}
@@ -365,9 +364,9 @@ function Footer() {
             </div>
           </div>
 
-          <div className="rounded-[28px] border border-slate-200/70 bg-slate-50/90 p-6 shadow-sm shadow-slate-200/50">
+          <div className="col-span-2 rounded-2xl border border-slate-200/70 bg-slate-50/90 p-4 shadow-sm shadow-slate-200/50 sm:p-6 md:col-span-2 xl:col-span-1">
             <h3 className="text-xl font-bold text-slate-950">Contact Us</h3>
-            <div className="mt-6 space-y-4 text-sm leading-7 text-slate-600">
+            <div className="mt-4 grid grid-cols-2 gap-x-5 gap-y-3 text-sm leading-6 text-slate-600 sm:mt-6 sm:gap-y-4">
               <div>
                 <p className="font-semibold text-slate-900">Location</p>
                 <p>Kochi, Kerala, India</p>
@@ -385,7 +384,7 @@ function Footer() {
               </div>
               <div>
                 <p className="font-semibold text-slate-900">Phone</p>
-                <a href="#contact" className="transition hover:text-teal-800">
+                <a href="tel:+919037071916" className="transition hover:text-teal-800">
                    +91 90370 71916
 
                 </a>
@@ -394,10 +393,10 @@ function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 space-y-6 border-t border-slate-300/40 pt-8 sm:flex sm:items-center sm:justify-between sm:space-y-0">
+        <div className="mt-8 grid gap-4 border-t border-slate-300/40 pt-6 text-center sm:mt-12 sm:grid-cols-2 sm:items-center sm:gap-6 sm:pt-8 sm:text-left xl:grid-cols-[1fr_auto_1fr]">
           <p className="text-sm text-slate-600">Copyright © 2026 Evorise. All Rights Reserved.</p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-slate-600">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm leading-6 text-slate-600 sm:justify-end xl:justify-center">
             <button
               type="button"
               onClick={openTermsAndConditions}
@@ -415,11 +414,12 @@ function Footer() {
             </button>
           </div>
 
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-3 sm:col-span-2 xl:col-span-1 xl:justify-end">
             <a
               href="https://www.instagram.com/evorise.in/"
               target="_blank"
               rel="noreferrer"
+              aria-label="Evorise on Instagram"
               className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#0f766e] transition hover:bg-[#0f766e] hover:text-white"
             >
               <FaInstagram className="h-5 w-5" />
@@ -428,6 +428,7 @@ function Footer() {
               href="https://www.facebook.com/profile.php?id=61591238267194"
               target="_blank"
               rel="noreferrer"
+              aria-label="Evorise on Facebook"
               className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#0f766e] transition hover:bg-[#0f766e] hover:text-white"
             >
               <FaFacebookF className="h-5 w-5" />
@@ -436,6 +437,7 @@ function Footer() {
               href="https://x.com/TheEvorise"
               target="_blank"
               rel="noreferrer"
+              aria-label="Evorise on X"
               className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#0f766e] transition hover:bg-[#0f766e] hover:text-white"
             >
               <FaXTwitter className="h-5 w-5" />
@@ -444,6 +446,7 @@ function Footer() {
               href="https://www.youtube.com/@evoriseecosystem"
               target="_blank"
               rel="noreferrer"
+              aria-label="Evorise on YouTube"
               className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#0f766e] transition hover:bg-[#0f766e] hover:text-white"
             >
               <FaYoutube className="h-5 w-5" />
@@ -456,10 +459,9 @@ function Footer() {
         href="https://wa.me/919037071916"
         target="_blank"
         rel="noreferrer"
-        className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500 text-white shadow-2xl shadow-emerald-500/30 transition-all duration-300 hover:bg-emerald-600"
+        className="fixed bottom-4 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-teal-700 text-white shadow-2xl shadow-teal-700/30 transition-all duration-300 hover:bg-teal-800 sm:bottom-6 sm:right-6 sm:h-16 sm:w-16"
       >
-        <span className="absolute -right-1 -top-1 h-3 w-3 rounded-full bg-red-500 shadow-lg shadow-red-500/40" />
-        <FaWhatsapp className="h-7 w-7" />
+        <FaWhatsapp className="h-5 w-5 sm:h-7 sm:w-7" />
       </a>
 
       {activeLegalContent && (
@@ -472,18 +474,18 @@ function Footer() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="legal-modal-title"
-            className="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-2xl bg-white shadow-2xl"
+            className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-white shadow-2xl"
           >
             <button
               onClick={closeLegalModal}
-              className="absolute right-5 top-5 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-2xl font-light leading-none text-slate-500 transition hover:bg-slate-200 hover:text-slate-800"
+              className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-2xl font-light leading-none text-slate-500 shadow-sm transition hover:bg-slate-200 hover:text-slate-800 sm:right-5 sm:top-5"
               aria-label={activeLegalContent.closeLabel}
               type="button"
             >
               ×
             </button>
 
-            <div className="px-6 py-10 sm:px-10 lg:px-12">
+            <div className="max-h-[90vh] overflow-y-auto px-6 py-10 sm:px-10 lg:px-12">
               <p className="text-sm font-bold uppercase tracking-[0.25em] text-teal-700">
                 Evorise
               </p>

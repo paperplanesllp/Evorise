@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import evoriseLogo from '../assets/Evoriselogo.jpeg'
 
 const navLinks = [
   { label: 'Home', sectionId: 'home' },
@@ -50,6 +51,23 @@ const socialLinks = [
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
+  useEffect(() => {
+    if (!isMenuOpen) return undefined
+
+    const previousOverflow = document.body.style.overflow
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setIsMenuOpen(false)
+    }
+
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('keydown', closeOnEscape)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [isMenuOpen])
+
   const scrollToSection = (sectionId) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
     setIsMenuOpen(false)
@@ -57,15 +75,19 @@ function Navbar() {
 
   return (
     <>
-      <header className="fixed left-0 top-0 z-50 w-full border-b border-black/10 bg-white/40 backdrop-blur-xl">
-        <nav className="mx-auto flex h-24 max-w-7xl items-center justify-between px-6 lg:px-10">
-          <Link to="/" onClick={() => scrollToSection('home')} className="shrink-0">
-            <span className="block text-2xl font-extrabold tracking-[0.22em] text-black">
-              EVORISE
-            </span>
-            <span className="mt-1 block text-[10px] font-semibold tracking-[0.35em] text-black/50">
-              FOREX ECOSYSTEM
-            </span>
+      <header className="fixed left-0 top-0 z-50 w-full border-b border-black/10 bg-white/90 backdrop-blur-xl">
+        <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:h-24 sm:px-6 lg:px-10">
+          <Link
+            to="/"
+            onClick={() => scrollToSection('home')}
+            className="block h-11 w-32 shrink-0 overflow-hidden rounded-lg shadow-sm sm:h-14 sm:w-40"
+            aria-label="Evorise home"
+          >
+            <img
+              src={evoriseLogo}
+              alt="Evorise"
+              className="h-full w-full object-cover object-center"
+            />
           </Link>
 
           <div className="hidden items-center gap-9 lg:flex">
@@ -85,12 +107,14 @@ function Navbar() {
             type="button"
             aria-label="Open menu"
             onClick={() => setIsMenuOpen(true)}
-            className="flex h-14 w-14 items-center justify-center rounded-2xl border border-black/10 bg-white/70 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white"
+            className="group flex h-12 items-center justify-center gap-3 rounded-full bg-[#151515] px-4 text-white shadow-sm transition-colors duration-300 hover:bg-teal-700 sm:px-5 lg:hidden"
           >
-            <span className="flex flex-col gap-1.5">
-              <span className="block h-0.5 w-6 rounded-full bg-black" />
-              <span className="block h-0.5 w-6 rounded-full bg-black" />
-              <span className="block h-0.5 w-6 rounded-full bg-black" />
+            <span className="hidden text-xs font-bold uppercase tracking-[0.18em] sm:inline">
+              Menu
+            </span>
+            <span className="flex w-5 flex-col items-end gap-1.5">
+              <span className="block h-px w-5 rounded-full bg-white" />
+              <span className="block h-px w-3.5 rounded-full bg-white transition-all duration-300 group-hover:w-5" />
             </span>
           </button>
         </nav>
@@ -104,7 +128,11 @@ function Navbar() {
       />
 
       <aside
-        className={`fixed right-0 top-0 z-[70] h-screen w-full max-w-[560px] overflow-y-auto bg-[#111515] px-9 py-9 text-white shadow-2xl transition-transform duration-500 sm:px-12 lg:px-16 ${
+        role="dialog"
+        aria-modal="true"
+        aria-label="Site menu"
+        aria-hidden={!isMenuOpen}
+        className={`fixed right-0 top-0 z-[70] h-screen w-full max-w-[560px] overflow-y-auto bg-[#151515] px-6 py-6 text-white shadow-2xl transition-transform duration-500 sm:px-10 sm:py-8 lg:px-12 ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -112,40 +140,56 @@ function Navbar() {
           type="button"
           aria-label="Close menu"
           onClick={() => setIsMenuOpen(false)}
-          className="absolute right-9 top-9 text-5xl font-light leading-none text-white/30 transition duration-300 hover:rotate-90 hover:text-white"
+          className="absolute right-6 top-6 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-2xl font-light leading-none text-white/70 transition-colors duration-300 hover:border-teal-600 hover:bg-teal-700 hover:text-white sm:right-10 sm:top-8"
         >
-          x
+          ×
         </button>
 
-        <div className="pt-20">
-          <Link to="/" onClick={() => scrollToSection('home')} className="inline-block">
-            <span className="block text-2xl font-extrabold tracking-[0.22em] text-teal-600">
-              EVORISE
-            </span>
-            <span className="mt-1 block text-[10px] font-semibold tracking-[0.35em] text-teal-600/80">
-              FOREX ECOSYSTEM
-            </span>
+        <div className="pt-16 sm:pt-14">
+          <Link
+            to="/"
+            onClick={() => scrollToSection('home')}
+            className="block h-14 w-40 overflow-hidden rounded-lg"
+            aria-label="Evorise home"
+          >
+            <img src={evoriseLogo} alt="Evorise" className="h-full w-full object-cover" />
           </Link>
 
-          <p className="mt-14 max-w-[440px] text-xl font-semibold leading-[1.65] text-white">
+          <nav aria-label="Menu navigation" className="mt-10 border-y border-white/15 py-4">
+            {navLinks.map((link, index) => (
+              <Link
+                key={link.label}
+                to={`/#${link.sectionId}`}
+                onClick={() => scrollToSection(link.sectionId)}
+                className="group flex items-center justify-between border-b border-white/10 py-4 text-xl font-semibold last:border-b-0 hover:text-teal-300 sm:text-2xl"
+              >
+                <span>{link.label}</span>
+                <span className="text-xs font-medium text-white/35 group-hover:text-teal-300">
+                  0{index + 1}
+                </span>
+              </Link>
+            ))}
+          </nav>
+
+          <p className="mt-8 max-w-[440px] text-base font-medium leading-7 text-white/70">
             Evorise is built around forex education, strategy backtesting, and
             trading automation for traders at different stages of the same
             journey.
           </p>
 
-          <div className="my-11 h-px w-full bg-white/15" />
+          <div className="my-8 h-px w-full bg-white/15" />
 
-          <h2 className="text-2xl font-extrabold">Let's Talk</h2>
+          <h2 className="text-xl font-extrabold">Let's Talk</h2>
 
-          <div className="mt-8 space-y-7">
+          <div className="mt-6 space-y-5">
             {contactItems.map((item) => (
-              <div key={item.label} className="flex gap-6">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-teal-700 text-white">
+              <div key={item.label} className="flex items-center gap-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-teal-700 text-white [&_svg]:h-5 [&_svg]:w-5">
                   {item.icon}
                 </div>
                 <div>
-                  <p className="text-lg font-medium text-white">{item.label}</p>
-                  <p className="mt-1 text-xl font-bold leading-8 text-white">
+                  <p className="text-sm font-medium text-white/55">{item.label}</p>
+                  <p className="text-base font-semibold leading-7 text-white">
                     {item.value}
                   </p>
                 </div>
@@ -153,9 +197,9 @@ function Navbar() {
             ))}
           </div>
 
-          <div className="my-11 h-px w-full bg-white/15" />
+          <div className="my-8 h-px w-full bg-white/15" />
 
-          <div className="flex flex-wrap gap-5">
+          <div className="flex flex-wrap gap-3 pb-4">
             {socialLinks.map((social) => (
               <a
                 key={social.label}
@@ -163,7 +207,7 @@ function Navbar() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={social.label}
-                className="flex h-14 w-14 items-center justify-center rounded-xl bg-white text-base font-extrabold text-teal-700 transition-all duration-300 hover:-translate-y-1 hover:bg-teal-700 hover:text-white"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-sm font-extrabold text-white transition-colors duration-300 hover:border-teal-700 hover:bg-teal-700"
               >
                 {social.label}
               </a>

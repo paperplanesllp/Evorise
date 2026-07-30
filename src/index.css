@@ -1,5 +1,55 @@
 @import "tailwindcss";
 
+:root {
+  font-family: "Avenir Next", "Segoe UI Variable", "Segoe UI", Helvetica, Arial, sans-serif;
+  color: #151515;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+::selection {
+  background: #99f6e4;
+  color: #151515;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:not(:disabled),
+a {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(15, 118, 110, 0.45);
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Avenir Next", "Segoe UI Variable Display", "Segoe UI", Helvetica, Arial, sans-serif;
+  text-wrap: balance;
+}
+
 @keyframes service-fade {
   from {
     opacity: 0;
@@ -10,8 +60,42 @@
   }
 }
 
+@keyframes marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  backface-visibility: hidden;
+  will-change: transform;
+  animation: marquee-scroll 22s linear infinite;
+}
+
+.marquee-right {
+  animation-direction: reverse;
+}
+
+.marquee-group {
+  display: flex;
+  flex-shrink: 0;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .service-animate {
     animation: service-fade 700ms ease-out both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    transform: translate3d(0, 0, 0);
+    animation: none;
   }
 }

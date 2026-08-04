@@ -1,4 +1,8 @@
 import { useContactModal } from '../hooks/useContactModal'
+import academyImage from '../assets/acadamy.jpg'
+import strategyImage from '../assets/stratergy.jpg'
+import academyDetailImage from '../assets/innaca.jpg'
+import strategyDetailImage from '../assets/lab.jpg'
 
 const services = [
   {
@@ -6,14 +10,14 @@ const services = [
     description:
       'A forex trading academy in Kochi for anyone who wants to learn forex trading online or in person — from the fundamentals to the discipline it takes to attempt a funded trading challenge.',
     cta: 'Explore Academy',
-    image: '/service-online.jpg',
+    image: academyImage,
   },
   {
     title: 'Evorise Strategy Lab',
     description:
       "For traders who already have a strategy that works. Bring it in for backtesting, get it reviewed through a strategy consultation, or have it fully built into an automated trading system — so your edge doesn't depend on you being at the screen.",
     cta: 'Explore Strategy Lab',
-    image: '/service-live.jpg',
+    image: strategyImage,
   },
 ]
 
@@ -194,14 +198,14 @@ function Services() {
                 eyebrow: 'For new and developing traders',
                 title: 'Evorise Academy',
                 description: 'Practical learning formats designed around clarity, guidance, and real market exposure.',
-                image: '/service-online.jpg',
+                image: academyDetailImage,
                 items: academyCourses,
               },
               {
                 eyebrow: 'For traders with an existing edge',
                 title: 'Evorise Strategy Lab',
                 description: 'Technical services that help validate, refine, and systematically execute your strategy.',
-                image: '/service-live.jpg',
+                image: strategyDetailImage,
                 items: strategyLabServices,
               },
             ].map((pillar) => (

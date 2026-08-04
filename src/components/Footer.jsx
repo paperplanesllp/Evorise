@@ -17,43 +17,34 @@ const privacyPolicySections = [
     ],
   },
   {
-    title: '2. Definitions',
+    title: '2. Data We Collect',
     content: [
-      'Account — a unique account created to access the Service.',
-      'Personal Data — any data that can identify an individual (name, email, phone number, image, etc.).',
-      'Usage Data — automatically collected data related to your use of the Service (IP address, browser type, device information, pages visited).',
-      'Strategy Data — any trading strategy, algorithm logic, code, backtest data, or related materials a client submits to Evorise Strategy Lab.',
-      'Service Provider — any third party processing data on behalf of Evorise.',
-    ],
-  },
-  {
-    title: '3. Data We Collect',
-    content: [
-      'Personal Data: name, email, phone number, and other identifiers you provide voluntarily through enrollment or contact forms.',
-      'Usage Data: device details, IP address, browser type, and time spent on the site, collected automatically.',
-      'Strategy Data (Strategy Lab clients only): any strategy logic, rules, code, or performance history submitted for backtesting, consultation, or automation.',
+      '● Personal Data: name, email, phone number, and other identifiers you provide voluntarily through enrollment or contact forms.',
+      '● Usage Data: device details, IP address, browser type, and time spent on the site, collected automatically.',
+      '● Strategy Data (Strategy Lab clients only): any strategy logic, rules, code, or performance history submitted for backtesting, consultation, or automation.',
+      "● LMS Access Data (Recorded Session students only): if you enroll in the Recorded Sessions format, your name, email, and enrollment details are shared with Royal Academy for Financial Studies to create and manage your access on their Learning Management System (LMS). Your activity on that platform (progress, login data, etc.) is governed by Royal Academy's own privacy practices, in addition to this Policy.",
       'We do not collect or store banking credentials, card details, or trading account passwords.',
     ],
   },
   {
-    title: '4. Purpose of Collecting Data',
+    title: '3. Purpose of Collecting Data',
     content: [
       'Your data is used solely to:',
-      'Provide and improve Evorise Academy and Strategy Lab services',
-      'Manage enrollment, accounts, and communication',
-      "Send service updates or, where you've opted in, marketing communication",
-      'Analyze usage to improve the Service',
-      'Meet legal and regulatory obligations',
+      '● Provide and improve Evorise Academy and Strategy Lab services',
+      '● Manage enrollment, accounts, and communication',
+      "● Send service updates or, where you've opted in, marketing communication",
+      '● Analyze usage to improve the Service',
+      '● Meet legal and regulatory obligations',
       'We do not sell, rent, or trade your data to third parties for marketing purposes.',
     ],
   },
   {
-    title: '5. Strategy Data — Special Handling',
+    title: '4. Strategy Data — Special Handling',
     content: [
       'Strategy Data submitted to Evorise Strategy Lab remains the intellectual property of the client who submits it. Evorise will:',
-      'Use Strategy Data solely for the purpose of backtesting, consultation, or automation as engaged by the client',
-      "Not share, reuse, or repurpose a client's Strategy Data for any other client's benefit",
-      'Retain Strategy Data only as long as necessary to deliver the engaged service, or as otherwise agreed in writing',
+      '● Use Strategy Data solely for the purpose of backtesting, consultation, or automation as engaged by the client',
+      "● Not share, reuse, or repurpose a client's Strategy Data for any other client's benefit",
+      '● Retain Strategy Data only as long as necessary to deliver the engaged service, or as otherwise agreed in writing',
     ],
   },
   {
@@ -71,7 +62,12 @@ const privacyPolicySections = [
   {
     title: '8. Data Sharing and Transfer',
     content: [
-      'Your data may be shared with service providers assisting our operations (hosting, analytics, communication tools), affiliates under common ownership adhering to this Policy, or regulatory authorities where legally required. Cross-border transfers, if any, will comply with the Digital Personal Data Protection Act, 2023.',
+      'Your data may be shared with:',
+      '● Service providers assisting our operations (hosting, analytics, communication tools)',
+      '● Royal Academy for Financial Studies, specifically for students enrolled in the Recorded Sessions format, to enable access to their LMS platform. This is a necessary transfer to deliver that specific service, limited to the data required for enrollment and access (name, email, and course details).',
+      '● Affiliates under common ownership adhering to this Policy',
+      '● Regulatory authorities, where legally required',
+      'Cross-border transfers, if any, will comply with the Digital Personal Data Protection Act, 2023.',
     ],
   },
   {
@@ -120,15 +116,18 @@ const termsAndConditionsSections = [
     ],
   },
   {
-    title: '2. Evorise Academy - Enrollment',
+    title: '2. Evorise Academy — Enrollment',
     content: [
-      '2.1 Enrollment is confirmed upon selection of a course format (online, offline, or live trading floor) at registration.',
-      '2.2 Access to recorded content or materials is provided for a limited duration as specified at enrollment.',
-      '2.3 Enrollment is non-transferable and valid only for the individual named on the admission form.',
+      '2.1 Evorise Academy offers instruction through five formats: Recorded Sessions, Online Trading Sessions, Offline Trading Sessions, Live Trading Floor, and One-on-One Sessions. Enrollment is confirmed upon selection of a format at registration.',
+      "2.2 Recorded Sessions are delivered through the Learning Management System (LMS) of Royal Academy for Financial Studies, a third-party platform. Upon enrollment in this format, the student's enrollment details (name, email, course selection) will be shared with Royal Academy to provision access on their LMS, and such access is subject to Royal Academy's own platform terms in addition to these Terms. Access is provided for a limited duration as specified at enrollment.",
+      '2.3 Online Trading Sessions and Offline Trading Sessions are conducted live, as scheduled at the time of enrollment, and access is valid for the batch/schedule the student is enrolled in.',
+      "2.4 Live Trading Floor access is provided at Evorise's Kochi office, subject to availability and scheduling communicated at enrollment.",
+      '2.5 One-on-One Sessions are scheduled individually based on client requirement and mentor availability, as agreed at the time of booking.',
+      '2.6 Enrollment is non-transferable and valid only for the individual named on the admission form, regardless of format selected.',
     ],
   },
   {
-    title: '3. Evorise Strategy Lab - Engagement',
+    title: '3. Evorise Strategy Lab — Engagement',
     content: [
       '3.1 Strategy Lab services are offered in three forms: strategy backtesting, strategy consultation, and full algorithm development, as selected by the client at engagement.',
       '3.2 The client warrants that any strategy submitted is their own, or that they hold the rights necessary to submit it for review, testing, or automation.',
@@ -201,7 +200,7 @@ const termsAndConditionsSections = [
     content: [
       '12.1 Evorise does not guarantee trading profits, funded-account approval, or business outcomes from any course or service. Results depend on individual effort, discipline, and market conditions.',
       '12.2 Evorise is not SEBI-registered and does not provide buy/sell recommendations.',
-      '12.3 By enrolling or engaging Strategy Lab, you acknowledge that all trading decisions and outcomes remain your own responsibility.',
+      '12.3 By enrolling or engaging with Strategy Lab, you acknowledge that all trading decisions and outcomes remain your own responsibility.',
     ],
   },
   {
@@ -212,18 +211,59 @@ const termsAndConditionsSections = [
   },
 ]
 
+const refundPolicySections = [
+  {
+    title: 'General Policy:',
+    content: [
+      '● All fees paid to Evorise for Academy or Strategy Lab services are final and non-refundable, including but not limited to withdrawal, non-attendance, dissatisfaction with course content or delivery, or discontinuation of the service by the participant for any reason.',
+    ],
+  },
+  {
+    title: 'Cancellation by Evorise:',
+    content: [
+      "● In the event that Evorise cancels a course, session, or engagement, or is unable to provide the service as agreed — including, for Recorded Sessions, where access cannot be provisioned through Royal Academy for Financial Studies' LMS for reasons attributable to Evorise or Royal Academy — a full refund will be issued to the enrolled participant, or an alternative arrangement will be offered at the participant's choice.",
+    ],
+  },
+  {
+    title: 'Contact Information:',
+    content: [
+      '● For any questions or concerns regarding our refund policy, please contact our support team at info@evorise.in or call 90370 71916.',
+    ],
+  },
+  {
+    title: 'Policy Updates:',
+    content: [
+      '● Evorise reserves the right to update or modify this refund policy at any time. Any changes will be communicated to enrolled participants.',
+      '● By enrolling in our courses or engaging our services, you acknowledge that you have read and agree to abide by the terms of this refund policy.',
+    ],
+  },
+]
+
 const legalModalContent = {
   privacy: {
     title: 'EVORISE — PRIVACY POLICY',
     closeLabel: 'Close privacy policy',
-    lastUpdated: 'Last Updated: July 18, 2026',
+    lastUpdated: 'Last Updated: 04 August 2026',
     sections: privacyPolicySections,
   },
   terms: {
-    title: 'TERMS AND CONDITIONS',
+    title: 'EVORISE — TERMS AND CONDITIONS',
     closeLabel: 'Close terms and conditions',
-    lastUpdated: null,
+    lastUpdated: 'Effective Date: 04 August 2026',
+    details: [
+      'Website: evorise.in',
+      'Entity: [Legal entity name] ("Evorise," "We," "Us," "Our")',
+    ],
     sections: termsAndConditionsSections,
+  },
+  refund: {
+    title: 'EVORISE — REFUND POLICY',
+    closeLabel: 'Close refund policy',
+    lastUpdated: 'Effective Date: 04 August 2026',
+    details: [
+      'Thank you for choosing Evorise for your trading education and strategy automation needs. We are committed to providing high-quality services to help you build your knowledge and skills in the forex market. Please review our refund policy carefully.',
+    ],
+    sections: refundPolicySections,
   },
 }
 
@@ -267,6 +307,11 @@ function Footer() {
     setActiveLegalModal('terms')
   }
 
+  const openRefundPolicy = (event) => {
+    event.preventDefault()
+    setActiveLegalModal('refund')
+  }
+
   const closeLegalModal = () => {
     setActiveLegalModal(null)
   }
@@ -280,7 +325,7 @@ function Footer() {
   const quickLinks = [
     { label: 'TERMS AND CONDITIONS', action: 'terms' },
     { label: 'EVORISE — PRIVACY POLICY', action: 'privacy' },
-    { label: 'Refund Policy', to: '/#refund' },
+    { label: 'Refund Policy', action: 'refund' },
     { label: 'Online Training', to: '/#services' },
     { label: 'Offline Training', to: '/#services' },
     { label: 'Live Trading Floor', to: '/#mentors' },
@@ -317,11 +362,17 @@ function Footer() {
             <h3 className="text-xl font-bold text-slate-950">Quick Links</h3>
             <div className="mt-4 grid gap-2.5 text-sm leading-6 text-slate-600 sm:mt-5 sm:grid-cols-2 sm:gap-3 md:grid-cols-1">
               {quickLinks.map((link) => (
-                link.action === 'privacy' || link.action === 'terms' ? (
+                link.action === 'privacy' || link.action === 'terms' || link.action === 'refund' ? (
                   <button
                     key={link.label}
                     type="button"
-                    onClick={link.action === 'privacy' ? openPrivacyPolicy : openTermsAndConditions}
+                    onClick={
+                      link.action === 'privacy'
+                        ? openPrivacyPolicy
+                        : link.action === 'refund'
+                          ? openRefundPolicy
+                          : openTermsAndConditions
+                    }
                     className="block text-left transition hover:text-teal-800"
                   >
                     {link.label}
@@ -500,6 +551,11 @@ function Footer() {
                   {activeLegalContent.lastUpdated}
                 </p>
               )}
+              {activeLegalContent.details?.map((detail) => (
+                <p key={detail} className="mt-1 text-sm font-medium text-slate-500">
+                  {detail}
+                </p>
+              ))}
 
               <div className="mt-8 space-y-7 text-sm leading-7 text-slate-600 sm:text-base">
                 {activeLegalContent.sections.map((section) => (

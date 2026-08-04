@@ -13,11 +13,11 @@ const mentors = [
 function MentorSpotlight({ mentor }) {
   return (
     <article className="-mx-6 mt-14 grid overflow-hidden border-y border-black/10 bg-[#151515] shadow-xl shadow-black/10 sm:mx-0 sm:mt-16 sm:rounded-3xl sm:border lg:grid-cols-2">
-      <div className="h-[300px] overflow-hidden bg-[#151515] sm:h-[420px] lg:h-auto lg:min-h-[600px]">
+      <div className="aspect-[2/3] w-full overflow-hidden bg-[#eef1f7] sm:aspect-auto sm:h-[420px] lg:h-auto lg:min-h-[600px]">
         <img
           src={mentor.image}
           alt={mentor.name}
-          className="h-full w-full object-cover grayscale transition-transform duration-500 hover:scale-105"
+          className="h-full w-full object-contain grayscale transition-transform duration-500 hover:scale-105 sm:object-cover"
           onError={(event) => {
             event.currentTarget.style.display = 'none'
           }}

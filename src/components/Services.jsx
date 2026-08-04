@@ -21,7 +21,7 @@ const services = [
   },
 ]
 
-const academyCourses = [
+const previousAcademyCourses = [
   {
     title: 'Online Forex Trading Course',
     icon: 'online',
@@ -42,7 +42,40 @@ const academyCourses = [
   },
 ]
 
-const strategyLabServices = [
+const academyCourses = [
+  {
+    title: 'Recorded Session',
+    icon: 'online',
+    description:
+      'Self-paced, structured modules of recorded sessions — ideal for beginners, working professionals, and remote learners.',
+  },
+  {
+    title: 'Online Forex Trading Course',
+    icon: 'online',
+    description:
+      'Structured live sessions conducted three times a week over Google Meet, where you get real-time teaching and live mentorship.',
+  },
+  {
+    title: 'Offline Forex Trading Course (Kochi)',
+    icon: 'classroom',
+    description:
+      'Face-to-face mentoring, doubt-clearing sessions, and guided chart analysis for traders who learn best with direct guidance.',
+  },
+  {
+    title: 'Live Trading Floor Experience',
+    icon: 'chart',
+    description:
+      'Observe live market analysis and real trade execution — bridging the gap between classroom theory and actual market participation, and preparing students for funded trading challenges.',
+  },
+  {
+    title: 'One-on-One Session',
+    icon: 'consultation',
+    description:
+      'Live classes with the mentor where you get individual mentorship from the tutor, built around specific questions, strategies, and trading challenges as per your needs.',
+  },
+]
+
+const previousStrategyLabServices = [
   {
     title: 'Trading Strategy Backtesting',
     icon: 'backtest',
@@ -60,6 +93,27 @@ const strategyLabServices = [
     icon: 'automation',
     description:
       "Have a strategy that works but can't be at the screen every hour it needs? We handle the algorithmic trading automation — building your own strategy into a system that runs on your terms, not your availability.",
+  },
+]
+
+const strategyLabServices = [
+  {
+    title: 'Trading Strategy Backtesting',
+    icon: 'backtest',
+    description:
+      "Not sure if your strategy holds up? Bring it in and we'll run a strategy backtesting pass against historical data before you risk live capital on it. Build a robust algorithm before you trust it with real capital.",
+  },
+  {
+    title: 'Strategy Consultation',
+    icon: 'consultation',
+    description:
+      "Get an expert read on your current approach — where it's strong, where it's exposed, and what it would take to run it systematically. Consultation on how efficient your strategy is and what could be done to optimise it. This isn't portfolio management or trading on your behalf — it's a second, expert set of eyes on a strategy that's already yours.",
+  },
+  {
+    title: 'Full Algorithm Development',
+    icon: 'automation',
+    description:
+      "Have a strategy that works but can't be on the screen every hour it needs? We handle the algorithmic trading automation — building your own strategy into a system that runs on your terms, not your availability.",
   },
 ]
 
@@ -203,7 +257,7 @@ function Services() {
               },
               {
                 eyebrow: 'For traders with an existing edge',
-                title: 'Evorise Strategy Lab',
+                title: 'Evorise Strategy Lab — Trading Automation & Backtesting',
                 description: 'Technical services that help validate, refine, and systematically execute your strategy.',
                 image: strategyDetailImage,
                 items: strategyLabServices,

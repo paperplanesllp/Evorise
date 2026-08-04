@@ -12,23 +12,23 @@ function Hero() {
       className="min-h-screen overflow-hidden bg-[#f4fbf9] px-5 pb-14 pt-28 sm:px-6 sm:pb-20 lg:pt-32"
     >
       <div className="mx-auto w-full max-w-[1800px] text-center">
-        <div className="mx-auto flex max-w-[1600px] flex-col items-center justify-center gap-3 text-[34px] font-bold leading-[1.05] tracking-tight sm:flex-row sm:flex-wrap sm:gap-8 sm:text-4xl md:text-7xl lg:flex-nowrap lg:gap-16 lg:text-[90px]">
+        <div className="mx-auto grid max-w-[1600px] grid-cols-2 items-center justify-center gap-x-4 gap-y-3 text-[34px] font-bold leading-[1.05] tracking-tight sm:flex sm:flex-wrap sm:gap-8 sm:text-4xl md:text-7xl lg:flex-nowrap lg:gap-16 lg:text-[90px]">
           <span
-            className="cursor-pointer text-transparent transition-all duration-500 hover:text-black"
+            className="cursor-pointer justify-self-end whitespace-nowrap text-transparent transition-all duration-500 hover:text-black sm:justify-self-auto"
             style={outlineTextStyle}
           >
             Learn It.
           </span>
 
           <span
-            className="cursor-pointer text-transparent transition-all duration-500 hover:text-black"
+            className="cursor-pointer justify-self-start whitespace-nowrap text-transparent transition-all duration-500 hover:text-black sm:justify-self-auto"
             style={outlineTextStyle}
           >
             Build It.
           </span>
 
           <span
-            className="cursor-pointer text-transparent transition-all duration-500 hover:text-black"
+            className="col-span-2 cursor-pointer justify-self-center whitespace-nowrap text-transparent transition-all duration-500 hover:text-black sm:col-auto sm:justify-self-auto"
             style={outlineTextStyle}
           >
             Automate It.

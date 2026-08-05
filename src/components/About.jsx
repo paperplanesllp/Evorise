@@ -97,7 +97,7 @@ function About() {
       </div>
 
       <div className="mt-14 w-full max-w-full overflow-hidden sm:mt-20 lg:mt-24">
-        <div className="grid grid-cols-1 gap-x-3 gap-y-4 px-5 text-center text-[clamp(2.4rem,10vw,4.5rem)] font-extrabold leading-none text-transparent min-[375px]:grid-cols-2 sm:px-8 md:hidden">
+        <div className="grid grid-cols-1 gap-x-3 gap-y-4 px-5 text-center text-[clamp(2.4rem,10vw,4.5rem)] font-extrabold leading-none text-transparent min-[375px]:grid-cols-2 sm:px-8 lg:hidden">
           {outlineWords.map((word) => (
             <span
               key={`mobile-outline-${word}`}
@@ -109,7 +109,7 @@ function About() {
           ))}
         </div>
 
-        <div className="marquee-track marquee-left hidden whitespace-nowrap font-extrabold leading-none text-transparent md:flex md:text-[96px] lg:text-[112px]">
+        <div className="marquee-track marquee-left hidden whitespace-nowrap font-extrabold leading-none text-transparent lg:flex lg:text-[112px]">
           {[0, 1].map((group) => (
             <div
               key={`outline-group-${group}`}
@@ -129,7 +129,7 @@ function About() {
           ))}
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-x-3 gap-y-4 px-5 text-center text-[clamp(2.4rem,10vw,4.5rem)] font-extrabold leading-none text-black min-[375px]:grid-cols-2 sm:px-8 md:hidden">
+        <div className="mt-8 grid grid-cols-1 gap-x-3 gap-y-4 px-5 text-center text-[clamp(2.4rem,10vw,4.5rem)] font-extrabold leading-none text-black min-[375px]:grid-cols-2 sm:px-8 lg:hidden">
           {solidWords.map((word) => (
             <span
               key={`mobile-solid-${word}`}
@@ -140,7 +140,7 @@ function About() {
           ))}
         </div>
 
-        <div className="marquee-track marquee-right mt-10 hidden whitespace-nowrap font-extrabold leading-none text-black md:flex md:text-[104px] lg:text-[120px]">
+        <div className="marquee-track marquee-right mt-10 hidden whitespace-nowrap font-extrabold leading-none text-black lg:flex lg:text-[120px]">
           {[0, 1].map((group) => (
             <div
               key={`solid-group-${group}`}

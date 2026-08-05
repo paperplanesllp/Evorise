@@ -83,7 +83,6 @@ h6 {
 }
 
 .marquee-track {
-  display: flex;
   width: max-content;
   backface-visibility: hidden;
   will-change: transform;

@@ -97,29 +97,17 @@ function About() {
       </div>
 
       <div className="mt-14 w-full max-w-full overflow-hidden sm:mt-20 lg:mt-24">
-        <div className="grid grid-cols-1 gap-x-3 gap-y-4 px-5 text-center text-[clamp(2.4rem,10vw,4.5rem)] font-extrabold leading-none text-transparent min-[375px]:grid-cols-2 sm:px-8 lg:hidden">
-          {outlineWords.map((word) => (
-            <span
-              key={`mobile-outline-${word}`}
-              className={`min-w-0 ${word === 'Master' ? 'bg-teal-700 px-1 text-white' : ''}`}
-              style={{ WebkitTextStroke: '1.2px #111' }}
-            >
-              {word}
-            </span>
-          ))}
-        </div>
-
-        <div className="marquee-track marquee-left hidden whitespace-nowrap font-extrabold leading-none text-transparent lg:flex lg:text-[112px]">
+        <div className="marquee-track marquee-left flex whitespace-nowrap text-[clamp(2.75rem,13vw,7rem)] font-extrabold leading-none tracking-[-0.03em] text-transparent lg:text-[112px] lg:tracking-normal">
           {[0, 1].map((group) => (
             <div
               key={`outline-group-${group}`}
-              className="marquee-group gap-16 pr-16"
+              className="marquee-group gap-8 pr-8 sm:gap-12 sm:pr-12 lg:gap-16 lg:pr-16"
               aria-hidden={group === 1}
             >
               {outlineWords.map((word) => (
                 <span
                   key={`${group}-${word}`}
-                  className={word === 'Master' ? 'bg-teal-700 px-3 text-white' : undefined}
+                  className={word === 'Master' ? 'bg-teal-700 px-2 text-white sm:px-3' : undefined}
                   style={{ WebkitTextStroke: '1.2px #111' }}
                 >
                   {word}
@@ -129,28 +117,17 @@ function About() {
           ))}
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-x-3 gap-y-4 px-5 text-center text-[clamp(2.4rem,10vw,4.5rem)] font-extrabold leading-none text-black min-[375px]:grid-cols-2 sm:px-8 lg:hidden">
-          {solidWords.map((word) => (
-            <span
-              key={`mobile-solid-${word}`}
-              className={`min-w-0 ${word === 'Trade' ? 'bg-teal-700 px-1 text-white' : ''}`}
-            >
-              {word}
-            </span>
-          ))}
-        </div>
-
-        <div className="marquee-track marquee-right mt-10 hidden whitespace-nowrap font-extrabold leading-none text-black lg:flex lg:text-[120px]">
+        <div className="marquee-track marquee-right mt-6 flex whitespace-nowrap text-[clamp(2.9rem,14vw,7.5rem)] font-extrabold leading-none tracking-[-0.03em] text-black sm:mt-8 lg:mt-10 lg:text-[120px] lg:tracking-normal">
           {[0, 1].map((group) => (
             <div
               key={`solid-group-${group}`}
-              className="marquee-group gap-20 pr-20"
+              className="marquee-group gap-8 pr-8 sm:gap-14 sm:pr-14 lg:gap-20 lg:pr-20"
               aria-hidden={group === 1}
             >
               {solidWords.map((word) => (
                 <span
                   key={`${group}-${word}`}
-                  className={word === 'Trade' ? 'bg-teal-700 px-3 text-white' : undefined}
+                  className={word === 'Trade' ? 'bg-teal-700 px-2 text-white sm:px-3' : undefined}
                 >
                   {word}
                 </span>

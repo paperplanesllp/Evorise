@@ -252,7 +252,7 @@ const legalModalContent = {
     lastUpdated: 'Effective Date: 04 August 2026',
     details: [
       'Website: evorise.in',
-      'Entity: [Legal entity name] ("Evorise," "We," "Us," "Our")',
+      'Entity: Evorise ("Evorise," "We," "Us," "Our")',
     ],
     sections: termsAndConditionsSections,
   },

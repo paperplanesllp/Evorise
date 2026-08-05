@@ -21,21 +21,21 @@ function About() {
   const solidWords = ['Trade', 'Succeed', 'Analyze', 'Master']
 
   return (
-    <section id="about" className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-28">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-stretch gap-10 px-6 sm:gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10">
-        <div className="relative order-2 min-h-[360px] lg:order-1 lg:min-h-0">
-          <div className="h-full overflow-hidden rounded-xl bg-slate-100 shadow-xl shadow-slate-200/70">
+    <section id="about" className="relative overflow-hidden bg-white py-14 sm:py-20 lg:py-28">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-stretch gap-10 px-5 sm:gap-12 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10">
+        <div className="order-2 min-w-0 lg:relative lg:order-1 lg:min-h-0">
+          <div className="w-full max-w-full overflow-hidden rounded-xl bg-slate-100 shadow-xl shadow-slate-200/70 lg:h-full">
             <img
               src="/service-live.jpg"
               alt="Live forex trading floor"
-              className="h-[360px] w-full object-cover md:h-[460px] lg:h-full lg:min-h-[680px]"
+              className="h-[280px] w-full max-w-full object-cover sm:h-[380px] md:h-[500px] lg:h-full lg:min-h-[680px]"
               onError={(event) => {
                 event.currentTarget.style.display = 'none'
               }}
             />
           </div>
 
-          <div className="absolute bottom-4 left-4 right-4 grid gap-4 rounded-2xl border border-slate-200/70 bg-white/95 p-5 shadow-xl sm:bottom-6 sm:left-6 sm:right-6 md:grid-cols-2 lg:p-6">
+          <div className="relative z-10 mx-3 -mt-8 grid min-w-0 gap-4 rounded-2xl border border-slate-200/70 bg-white/95 p-5 shadow-xl sm:mx-6 sm:-mt-12 md:grid-cols-2 lg:absolute lg:bottom-6 lg:left-6 lg:right-6 lg:mx-0 lg:mt-0 lg:p-6">
             {divisions.map((division) => (
               <div key={division.title}>
                 <h3 className="text-base font-extrabold text-slate-950">
@@ -49,13 +49,13 @@ function About() {
           </div>
         </div>
 
-        <div className="order-1 flex flex-col justify-center lg:order-2 lg:py-6">
+        <div className="order-1 flex min-w-0 flex-col justify-center lg:order-2 lg:py-6">
           <div className="inline-flex items-center gap-3 rounded-full bg-teal-50 px-5 py-2.5 text-sm font-bold uppercase tracking-[0.18em] text-teal-800">
             <span className="h-2.5 w-2.5 rounded-full bg-teal-700" />
             <span>Who We Are</span>
           </div>
 
-          <h2 className="mt-6 max-w-4xl text-[38px] font-extrabold leading-[1.12] tracking-tight text-[#151515] sm:mt-7 sm:text-4xl md:text-5xl lg:text-[58px]">
+          <h2 className="mt-6 max-w-4xl break-words text-[34px] font-extrabold leading-[1.12] tracking-tight text-[#151515] sm:mt-7 sm:text-4xl md:text-5xl lg:text-[58px]">
             Your Trusted Partner in Forex Education & Trading Automation
           </h2>
 
@@ -96,8 +96,20 @@ function About() {
         </div>
       </div>
 
-      <div className="mt-20 overflow-hidden lg:mt-24">
-        <div className="marquee-track marquee-left whitespace-nowrap text-[72px] font-extrabold leading-none text-transparent md:text-[96px] lg:text-[112px]">
+      <div className="mt-14 w-full max-w-full overflow-hidden sm:mt-20 lg:mt-24">
+        <div className="grid grid-cols-1 gap-x-3 gap-y-4 px-5 text-center text-[clamp(2.4rem,10vw,4.5rem)] font-extrabold leading-none text-transparent min-[375px]:grid-cols-2 sm:px-8 md:hidden">
+          {outlineWords.map((word) => (
+            <span
+              key={`mobile-outline-${word}`}
+              className={`min-w-0 ${word === 'Master' ? 'bg-teal-700 px-1 text-white' : ''}`}
+              style={{ WebkitTextStroke: '1.2px #111' }}
+            >
+              {word}
+            </span>
+          ))}
+        </div>
+
+        <div className="marquee-track marquee-left hidden whitespace-nowrap font-extrabold leading-none text-transparent md:flex md:text-[96px] lg:text-[112px]">
           {[0, 1].map((group) => (
             <div
               key={`outline-group-${group}`}
@@ -117,7 +129,18 @@ function About() {
           ))}
         </div>
 
-        <div className="marquee-track marquee-right mt-10 whitespace-nowrap text-[76px] font-extrabold leading-none text-black md:text-[104px] lg:text-[120px]">
+        <div className="mt-8 grid grid-cols-1 gap-x-3 gap-y-4 px-5 text-center text-[clamp(2.4rem,10vw,4.5rem)] font-extrabold leading-none text-black min-[375px]:grid-cols-2 sm:px-8 md:hidden">
+          {solidWords.map((word) => (
+            <span
+              key={`mobile-solid-${word}`}
+              className={`min-w-0 ${word === 'Trade' ? 'bg-teal-700 px-1 text-white' : ''}`}
+            >
+              {word}
+            </span>
+          ))}
+        </div>
+
+        <div className="marquee-track marquee-right mt-10 hidden whitespace-nowrap font-extrabold leading-none text-black md:flex md:text-[104px] lg:text-[120px]">
           {[0, 1].map((group) => (
             <div
               key={`solid-group-${group}`}

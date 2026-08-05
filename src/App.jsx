@@ -14,7 +14,7 @@ function LandingPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="min-w-0 overflow-x-clip">
         <Hero />
         <About />
         <Services />

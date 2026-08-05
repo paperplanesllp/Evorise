@@ -45,10 +45,10 @@ function Mentors() {
   return (
     <section
       id="mentors"
-      className="bg-[#f4fbf9] py-20 lg:py-28"
+      className="bg-[#f4fbf9] py-14 sm:py-20 lg:py-28"
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="mx-auto flex w-fit items-center gap-4 rounded-full bg-white/85 px-7 py-4 text-lg font-extrabold text-slate-700 shadow-xl shadow-black/10">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
+        <div className="mx-auto flex w-fit max-w-full items-center gap-3 rounded-full bg-white/85 px-5 py-3 text-base font-extrabold text-slate-700 shadow-xl shadow-black/10 sm:gap-4 sm:px-7 sm:py-4 sm:text-lg">
           <span className="h-4 w-4 rounded-full bg-teal-700" />
           <span>Evorise Guide</span>
           <span className="h-4 w-4 rounded-full bg-teal-700" />

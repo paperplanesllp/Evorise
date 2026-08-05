@@ -9,43 +9,46 @@ function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen overflow-hidden bg-[#f4fbf9] px-5 pb-14 pt-28 sm:px-6 sm:pb-20 lg:pt-32"
+      className="overflow-hidden bg-[#f4fbf9] px-5 pb-12 pt-24 sm:min-h-screen sm:px-8 sm:pb-20 sm:pt-32 lg:px-12"
     >
       <div className="mx-auto w-full max-w-[1800px] text-center">
-        <div className="mx-auto grid max-w-[1600px] grid-cols-2 items-center justify-center gap-x-4 gap-y-3 text-[34px] font-bold leading-[1.05] tracking-tight sm:flex sm:flex-wrap sm:gap-8 sm:text-4xl md:text-7xl lg:flex-nowrap lg:gap-16 lg:text-[90px]">
+        <div className="mx-auto flex max-w-[1600px] flex-col items-center justify-center gap-1 text-[clamp(2.5rem,12vw,3.5rem)] font-bold leading-[1.08] tracking-[-0.03em] sm:flex-row sm:flex-wrap sm:gap-8 sm:text-4xl md:text-7xl lg:flex-nowrap lg:gap-16 lg:text-[90px]">
           <span
-            className="cursor-pointer justify-self-end whitespace-nowrap text-transparent transition-all duration-500 hover:text-black sm:justify-self-auto"
+            className="cursor-pointer whitespace-nowrap text-transparent transition-all duration-500 hover:text-black"
             style={outlineTextStyle}
           >
-            Learn It.
+            <span className="sm:hidden">Learn.</span>
+            <span className="hidden sm:inline">Learn It.</span>
           </span>
 
           <span
-            className="cursor-pointer justify-self-start whitespace-nowrap text-transparent transition-all duration-500 hover:text-black sm:justify-self-auto"
+            className="cursor-pointer whitespace-nowrap text-transparent transition-all duration-500 hover:text-black"
             style={outlineTextStyle}
           >
-            Build It.
+            <span className="sm:hidden">Build.</span>
+            <span className="hidden sm:inline">Build It.</span>
           </span>
 
           <span
-            className="col-span-2 cursor-pointer justify-self-center whitespace-nowrap text-transparent transition-all duration-500 hover:text-black sm:col-auto sm:justify-self-auto"
+            className="cursor-pointer whitespace-nowrap text-transparent transition-all duration-500 hover:text-black"
             style={outlineTextStyle}
           >
-            Automate It.
+            <span className="sm:hidden">Automate.</span>
+            <span className="hidden sm:inline">Automate It.</span>
           </span>
         </div>
 
-        <div className="mt-10 inline-flex max-w-full items-center gap-2.5 rounded-full border border-black/5 bg-white/90 px-4 py-3 text-sm font-bold leading-5 text-slate-700 shadow-lg backdrop-blur-sm sm:mt-16 sm:gap-4 sm:px-8 sm:py-4 sm:text-base">
+        <div className="mt-8 flex w-full max-w-full items-center justify-between gap-2.5 rounded-full border border-black/5 bg-white/90 px-4 py-3 text-sm font-bold leading-5 text-slate-700 shadow-lg backdrop-blur-sm sm:mx-auto sm:mt-16 sm:w-fit sm:gap-4 sm:px-8 sm:py-4 sm:text-base">
           <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-teal-700 sm:h-3 sm:w-3" />
-          <span>A Forex Trading Ecosystem Built Around You</span>
+          <span className="min-w-0 text-center">A Forex Trading Ecosystem Built Around You</span>
           <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-teal-700 sm:h-3 sm:w-3" />
         </div>
 
-        <h1 className="mx-auto mt-8 max-w-6xl text-[40px] font-bold leading-[1.08] tracking-tight text-[#111111] sm:mt-12 sm:text-5xl md:text-7xl lg:text-[85px]">
+        <h1 className="mx-auto mt-8 max-w-6xl break-words text-[clamp(2.35rem,11vw,3rem)] font-bold leading-[1.02] tracking-tight text-[#111111] sm:mt-12 sm:text-5xl md:text-7xl lg:text-[85px]">
           Master the Markets with Evorise
         </h1>
 
-        <p className="mx-auto mt-6 max-w-5xl text-left text-base leading-7 text-slate-600 sm:mt-10 sm:text-lg sm:leading-9 md:text-justify md:text-[22px] md:[text-align-last:left]">
+        <p className="mx-auto mt-6 max-w-5xl break-words text-left text-base leading-8 text-slate-600 sm:mt-10 sm:text-lg sm:leading-9 md:text-justify md:text-[22px] md:[text-align-last:left]">
           Evorise is a forex trading ecosystem based in Kochi — not just another course, and not a promise of overnight success. We're built around two pillars: Evorise Academy, a structured forex trading course for anyone starting out, and Evorise Strategy Lab, where experienced traders get their strategy backtested, refined, or fully automated. Wherever you are in your trading journey, Evorise is built to help you make informed trading decisions — not empty promises.
         </p>
 

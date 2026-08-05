@@ -510,7 +510,8 @@ function Footer() {
         href="https://wa.me/919037071916"
         target="_blank"
         rel="noreferrer"
-        className="fixed bottom-4 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-teal-700 text-white shadow-2xl shadow-teal-700/30 transition-all duration-300 hover:bg-teal-800 sm:bottom-6 sm:right-6 sm:h-16 sm:w-16"
+        aria-label="Chat with Evorise on WhatsApp"
+        className="fixed bottom-4 right-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-teal-700 text-white shadow-2xl shadow-teal-700/30 transition-all duration-300 hover:bg-teal-800 sm:bottom-6 sm:right-6 sm:h-16 sm:w-16"
       >
         <FaWhatsapp className="h-5 w-5 sm:h-7 sm:w-7" />
       </a>
@@ -551,8 +552,11 @@ function Footer() {
                   {activeLegalContent.lastUpdated}
                 </p>
               )}
-              {activeLegalContent.details?.map((detail) => (
-                <p key={detail} className="mt-1 text-sm font-medium text-slate-500">
+              {activeLegalContent.details?.map((detail, index) => (
+                <p
+                  key={detail}
+                  className={`${index === 0 ? 'mt-5' : 'mt-1'} text-sm font-medium text-slate-500`}
+                >
                   {detail}
                 </p>
               ))}

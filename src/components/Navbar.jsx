@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { FaFacebookF, FaInstagram, FaXTwitter, FaYoutube } from 'react-icons/fa6'
 import evoriseLogo from '../assets/Evoriselogo.jpeg'
 
 const navLinks = [
@@ -42,10 +43,10 @@ const contactItems = [
 ]
 
 const socialLinks = [
-  { label: 'IG', href: 'https://www.instagram.com/evorise.in/' },
-  { label: 'FB', href: 'https://www.facebook.com/profile.php?id=61591238267194' },
-  { label: 'YT', href: 'https://www.youtube.com/@evoriseecosystem' },
-  { label: 'X', href: 'https://x.com/TheEvorise' },
+  { label: 'Instagram', icon: FaInstagram, href: 'https://www.instagram.com/evorise.in/' },
+  { label: 'Facebook', icon: FaFacebookF, href: 'https://www.facebook.com/profile.php?id=61591238267194' },
+  { label: 'YouTube', icon: FaYoutube, href: 'https://www.youtube.com/@evoriseecosystem' },
+  { label: 'X', icon: FaXTwitter, href: 'https://x.com/TheEvorise' },
 ]
 
 function Navbar() {
@@ -75,12 +76,12 @@ function Navbar() {
 
   return (
     <>
-      <header className="fixed left-0 top-0 z-50 w-full border-b border-black/10 bg-white/90 backdrop-blur-xl">
-        <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:h-24 sm:px-6 lg:px-10">
+      <header className="fixed inset-x-0 top-0 z-50 w-full max-w-full border-b border-black/10 bg-white/90 backdrop-blur-xl">
+        <nav className="mx-auto flex h-[72px] w-full max-w-7xl items-center justify-between gap-4 px-4 sm:h-24 sm:px-6 lg:px-10">
           <Link
             to="/"
             onClick={() => scrollToSection('home')}
-            className="block h-11 w-32 shrink-0 overflow-hidden rounded-lg shadow-sm sm:h-14 sm:w-40"
+            className="block h-[52px] w-[150px] shrink-0 overflow-hidden rounded-lg shadow-sm sm:h-14 sm:w-[180px] md:w-[210px] lg:w-40"
             aria-label="Evorise home"
           >
             <img
@@ -107,7 +108,7 @@ function Navbar() {
             type="button"
             aria-label="Open menu"
             onClick={() => setIsMenuOpen(true)}
-            className="group flex h-12 items-center justify-center gap-3 rounded-full bg-[#151515] px-4 text-white shadow-sm transition-colors duration-300 hover:bg-teal-700 sm:px-5 lg:hidden"
+            className="group flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#151515] text-white shadow-sm transition-colors duration-300 hover:bg-teal-700 sm:h-12 sm:w-auto sm:gap-3 sm:px-5 lg:hidden"
           >
             <span className="hidden text-xs font-bold uppercase tracking-[0.18em] sm:inline">
               Menu
@@ -207,9 +208,9 @@ function Navbar() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={social.label}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-sm font-extrabold text-white transition-colors duration-300 hover:border-teal-700 hover:bg-teal-700"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition-colors duration-300 hover:border-teal-700 hover:bg-teal-700"
               >
-                {social.label}
+                <social.icon className="h-5 w-5" aria-hidden="true" />
               </a>
             ))}
           </div>

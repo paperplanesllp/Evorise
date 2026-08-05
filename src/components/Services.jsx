@@ -178,25 +178,25 @@ function Services() {
   const { openModal } = useContactModal()
 
   return (
-    <section id="services" className="bg-[#f7f7f7] py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <h2 className="text-center text-4xl font-bold uppercase tracking-tight md:text-6xl">
+    <section id="services" className="bg-[#f7f7f7] py-14 sm:py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+        <h2 className="whitespace-nowrap text-center text-[clamp(2rem,10vw,2.75rem)] font-bold uppercase tracking-[-0.04em] sm:text-5xl sm:tracking-tight md:text-6xl">
           <span className="text-[#151515]">OUR </span>
           <span className="text-teal-700">SERVICES</span>
         </h2>
 
-        <p className="mt-6 text-center text-lg font-extrabold uppercase tracking-[0.22em] text-[#151515]">
+        <p className="mt-4 text-center text-base font-extrabold uppercase tracking-[0.16em] text-[#151515] sm:mt-6 sm:text-lg sm:tracking-[0.22em]">
           Two Pillars
         </p>
 
-        <div className="mx-auto mt-16 grid max-w-6xl gap-8 md:grid-cols-2 lg:gap-10">
+        <div className="mx-auto mt-10 grid max-w-6xl gap-6 sm:mt-16 sm:gap-8 md:grid-cols-2 lg:gap-10">
           {services.map((service, index) => (
             <article
               key={service.title}
-              className="service-animate group flex h-full flex-col overflow-hidden rounded-3xl border border-black/10 bg-white p-3 shadow-sm transition-all duration-500 ease-out hover:-translate-y-2 hover:border-[#0f9f8f]/35 hover:shadow-xl sm:p-4"
+              className="service-animate group flex h-full min-w-0 max-w-full flex-col overflow-hidden rounded-3xl border border-black/10 bg-white p-3 shadow-sm transition-all duration-500 ease-out hover:-translate-y-2 hover:border-[#0f9f8f]/35 hover:shadow-xl sm:p-4"
               style={{ animationDelay: `${index * 120}ms` }}
             >
-              <div className="h-[300px] overflow-hidden rounded-2xl bg-slate-100 sm:h-[340px] lg:h-[380px]">
+              <div className="h-[280px] w-full max-w-full overflow-hidden rounded-2xl bg-slate-100 sm:h-[340px] lg:h-[380px]">
                 <img
                   src={service.image}
                   alt={service.title}
@@ -208,7 +208,7 @@ function Services() {
               </div>
 
               <div className="flex flex-1 flex-col px-4 pb-8 sm:px-6 lg:px-8 lg:pb-10">
-                <h3 className="mx-auto mt-8 min-h-[5.5rem] max-w-[24rem] text-center text-3xl font-extrabold uppercase leading-tight tracking-tight text-[#151515] md:text-[34px]">
+                <h3 className="mx-auto mt-6 max-w-[24rem] break-words text-center text-[28px] font-extrabold uppercase leading-tight tracking-tight text-[#151515] sm:mt-8 sm:min-h-[5.5rem] sm:text-3xl md:text-[34px]">
                   {service.title}
                 </h3>
 
@@ -257,7 +257,7 @@ function Services() {
               },
               {
                 eyebrow: 'For traders with an existing edge',
-                title: 'Evorise Strategy Lab — Trading Automation & Backtesting',
+                title: 'Evorise Strategy Lab',
                 description: 'Technical services that help validate, refine, and systematically execute your strategy.',
                 image: strategyDetailImage,
                 items: strategyLabServices,

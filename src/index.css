@@ -18,6 +18,18 @@ body {
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
+  overflow-x: clip;
+}
+
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+}
+
+img,
+svg {
+  max-width: 100%;
 }
 
 ::selection {

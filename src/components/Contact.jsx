@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import emailjs from '@emailjs/browser'
+import { FaFacebookF, FaInstagram, FaXTwitter, FaYoutube } from 'react-icons/fa6'
 
 const fieldClass =
   'h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-teal-700 focus:ring-4 focus:ring-teal-700/10 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-500'
@@ -97,14 +98,14 @@ function Contact() {
   ]
 
   const socialLinks = [
-    { label: 'Instagram', shortLabel: 'IG', href: 'https://www.instagram.com/evorise.in/' },
+    { label: 'Instagram', icon: FaInstagram, href: 'https://www.instagram.com/evorise.in/' },
     {
       label: 'Facebook',
-      shortLabel: 'FB',
+      icon: FaFacebookF,
       href: 'https://www.facebook.com/profile.php?id=61591238267194',
     },
-    { label: 'YouTube', shortLabel: 'YT', href: 'https://www.youtube.com/@evoriseecosystem' },
-    { label: 'X', shortLabel: 'X', href: 'https://x.com/TheEvorise' },
+    { label: 'YouTube', icon: FaYoutube, href: 'https://www.youtube.com/@evoriseecosystem' },
+    { label: 'X', icon: FaXTwitter, href: 'https://x.com/TheEvorise' },
   ]
 
   const handleSubmit = async (event) => {
@@ -238,9 +239,9 @@ function Contact() {
                       target="_blank"
                       rel="noreferrer"
                       aria-label={`Evorise on ${item.label}`}
-                      className="flex h-10 min-w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 px-3 text-xs font-bold text-white transition hover:bg-white hover:text-teal-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-white hover:text-teal-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
                     >
-                      {item.shortLabel}
+                      <item.icon className="h-[18px] w-[18px]" aria-hidden="true" />
                     </a>
                   ))}
                 </div>

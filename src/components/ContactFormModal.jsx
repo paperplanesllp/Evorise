@@ -2,24 +2,6 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
 import { useContactModal } from '../hooks/useContactModal'
 
-const serviceOptions = [
-  'Website Development',
-  'E-commerce Development',
-  'UI/UX Design',
-  'Branding',
-  'Digital Marketing',
-  'Business Consultation',
-  'Other',
-]
-
-const budgetOptions = [
-  'Below $5,000',
-  '$5,000 - $10,000',
-  '$10,000 - $25,000',
-  '$25,000 - $50,000',
-  'Above $50,000',
-]
-
 const initialFormData = {
   name: '',
   email: '',
@@ -108,21 +90,6 @@ function ContactIcon({ type }) {
     <svg {...commonProps}>
       <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" />
       <circle cx="12" cy="10" r="2.5" />
-    </svg>
-  )
-}
-
-function CheckIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 20 20"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      className="h-4 w-4"
-    >
-      <path d="m4 10 4 4 8-8" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
@@ -258,7 +225,7 @@ export function ContactFormModal() {
     }
 
     if (!formData.interest.trim()) {
-      newErrors.interest = 'Please select the service you need.'
+      newErrors.interest = 'Please enter the service you need.'
     }
 
     if (!formData.message.trim()) {
@@ -458,28 +425,6 @@ export function ContactFormModal() {
               </div>
             </div>
 
-            <div className="mt-6 hidden border-t border-white/10 pt-6 lg:block">
-              <ul className="space-y-3 text-sm text-teal-50/85">
-                <li className="flex items-center gap-2.5">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-teal-700 text-white">
-                    <CheckIcon />
-                  </span>
-                  Quick and clear response
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-teal-700 text-white">
-                    <CheckIcon />
-                  </span>
-                  Personal consultation
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-teal-700 text-white">
-                    <CheckIcon />
-                  </span>
-                  No-obligation discussion
-                </li>
-              </ul>
-            </div>
           </div>
         </aside>
 
@@ -625,22 +570,17 @@ export function ContactFormModal() {
                     <label htmlFor="interest" className="text-sm font-semibold text-slate-700">
                       Service Required <span className="text-red-600">*</span>
                     </label>
-                    <select
+                    <input
                       id="interest"
+                      type="text"
                       name="interest"
                       value={formData.interest}
                       onChange={handleChange}
+                      placeholder="Enter the service you need"
                       aria-invalid={Boolean(errors.interest)}
                       aria-describedby={errors.interest ? 'interest-error' : undefined}
                       className={getFieldClass(Boolean(errors.interest))}
-                    >
-                      <option value="">Select a service</option>
-                      {serviceOptions.map((service) => (
-                        <option key={service} value={service}>
-                          {service}
-                        </option>
-                      ))}
-                    </select>
+                    />
                     <FieldError id="interest-error">{errors.interest}</FieldError>
                   </div>
 
@@ -648,20 +588,15 @@ export function ContactFormModal() {
                     <label htmlFor="budget" className="text-sm font-semibold text-slate-700">
                       Estimated Budget
                     </label>
-                    <select
+                    <input
                       id="budget"
+                      type="text"
                       name="budget"
                       value={formData.budget}
                       onChange={handleChange}
+                      placeholder="Enter your estimated budget"
                       className={getFieldClass(false)}
-                    >
-                      <option value="">Select a budget range</option>
-                      {budgetOptions.map((budget) => (
-                        <option key={budget} value={budget}>
-                          {budget}
-                        </option>
-                      ))}
-                    </select>
+                    />
                   </div>
 
                   <div className="sm:col-span-2">

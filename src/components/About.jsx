@@ -97,7 +97,7 @@ function About() {
       </div>
 
       <div className="mt-14 w-full max-w-full overflow-hidden sm:mt-20 lg:mt-24">
-        <div className="marquee-track marquee-left flex whitespace-nowrap text-[clamp(2.75rem,13vw,7rem)] font-extrabold leading-none tracking-[-0.03em] text-transparent lg:text-[112px] lg:tracking-normal">
+        <div className="marquee-track marquee-left flex whitespace-nowrap text-[clamp(2.75rem,13vw,7rem)] font-bold leading-none tracking-[-0.03em] text-transparent lg:text-[112px] lg:font-extrabold lg:tracking-normal">
           {[0, 1].map((group) => (
             <div
               key={`outline-group-${group}`}
@@ -117,7 +117,7 @@ function About() {
           ))}
         </div>
 
-        <div className="marquee-track marquee-right mt-6 flex whitespace-nowrap text-[clamp(2.9rem,14vw,7.5rem)] font-extrabold leading-none tracking-[-0.03em] text-black sm:mt-8 lg:mt-10 lg:text-[120px] lg:tracking-normal">
+        <div className="marquee-track marquee-right mt-6 flex whitespace-nowrap text-[clamp(2.9rem,14vw,7.5rem)] font-bold leading-none tracking-[-0.03em] text-black sm:mt-8 lg:mt-10 lg:text-[120px] lg:font-extrabold lg:tracking-normal">
           {[0, 1].map((group) => (
             <div
               key={`solid-group-${group}`}

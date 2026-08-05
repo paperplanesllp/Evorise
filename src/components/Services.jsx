@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { useContactModal } from '../hooks/useContactModal'
 import academyImage from '../assets/acadamy.jpg'
 import strategyImage from '../assets/stratergy.jpg'
@@ -176,8 +177,41 @@ function DetailIcon({ type }) {
 
 function Services() {
   const { openModal } = useContactModal()
+  const [activeDetails, setActiveDetails] = useState(null)
+
+  useEffect(() => {
+    if (!activeDetails) return undefined
+
+    const previousOverflow = document.body.style.overflow
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setActiveDetails(null)
+    }
+
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('keydown', closeOnEscape)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [activeDetails])
+
+  const detailModal = activeDetails === 'academy'
+    ? {
+        title: 'Evorise Academy',
+        description: 'Structured forex education designed to help new and developing traders build practical knowledge, disciplined habits, and confidence through guided learning.',
+        items: academyCourses,
+      }
+    : activeDetails === 'lab'
+      ? {
+          title: 'Evorise Strategy Lab',
+          description: 'Technical services for traders who want to validate, refine, and systematically execute an existing trading strategy.',
+          items: strategyLabServices,
+        }
+      : null
 
   return (
+    <>
     <section id="services" className="bg-[#f7f7f7] py-14 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         <h2 className="whitespace-nowrap text-center text-[clamp(2rem,10vw,2.75rem)] font-bold uppercase tracking-[-0.04em] sm:text-5xl sm:tracking-tight md:text-6xl">
@@ -246,7 +280,7 @@ function Services() {
             </p>
           </div>
 
-          <div className="mt-12 grid items-start gap-8 lg:grid-cols-2 lg:gap-10">
+          <div className="mt-12 grid items-stretch gap-8 lg:grid-cols-2 lg:gap-10">
             {[
               {
                 eyebrow: 'For new and developing traders',
@@ -265,7 +299,7 @@ function Services() {
             ].map((pillar) => (
               <article
                 key={pillar.title}
-                className="service-animate overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm"
+                className="service-animate flex h-full min-w-0 flex-col overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm"
               >
                 <div className="relative h-52 overflow-hidden bg-slate-100 sm:h-60">
                   <img
@@ -284,14 +318,14 @@ function Services() {
                   </div>
                 </div>
 
-                <div className="p-5 sm:p-8">
+                <div className="flex flex-1 flex-col p-5 sm:p-8">
                   <p className="text-base leading-7 text-slate-600">{pillar.description}</p>
 
-                  <div className="mt-7 grid gap-4">
-                    {pillar.items.map((item, index) => (
+                  <div className="mt-7 grid flex-1 gap-4">
+                    {pillar.items.slice(0, 2).map((item, index) => (
                       <div
                         key={item.title}
-                        className="group flex gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 transition-colors duration-300 hover:border-teal-700/30 hover:bg-teal-50 sm:p-5"
+                        className="group flex h-full gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 transition-colors duration-300 hover:border-teal-700/30 hover:bg-teal-50 sm:p-5"
                       >
                         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-teal-700 text-white">
                           <DetailIcon type={item.icon} />
@@ -303,21 +337,32 @@ function Services() {
                             </h5>
                             <span className="text-xs font-bold text-teal-700">0{index + 1}</span>
                           </div>
-                          <p className="mt-2 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
-                            {item.description}
+                          <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
+                            {pillar.title === 'Evorise Academy' && index === 1
+                              ? 'Structured live sessions conducted three times a week over Google Meet…'
+                              : item.description}
                           </p>
+                          <button
+                            type="button"
+                            onClick={() => setActiveDetails(pillar.title === 'Evorise Academy' ? 'academy' : 'lab')}
+                            className="mt-2 text-sm font-bold text-teal-700 transition hover:text-teal-900"
+                          >
+                            Read more
+                          </button>
                         </div>
                       </div>
-                    ))}
+                      ))}
                   </div>
 
-                  <button
-                    type="button"
-                    onClick={openModal}
-                    className="mt-7 w-full rounded-xl bg-[#151515] px-6 py-4 text-sm font-bold uppercase tracking-[0.14em] text-white transition-colors duration-300 hover:bg-teal-700"
-                  >
-                    Talk to the Evorise team
-                  </button>
+                  <div className="mt-auto pt-7">
+                    <button
+                      type="button"
+                      onClick={() => setActiveDetails(pillar.title === 'Evorise Academy' ? 'academy' : 'lab')}
+                      className="mx-auto mb-3 flex items-center justify-center rounded-full border border-teal-700 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.12em] text-teal-700 transition-colors hover:bg-teal-700 hover:text-white"
+                    >
+                      {pillar.title === 'Evorise Academy' ? 'Explore Academy' : 'Explore Strategy Lab'}
+                    </button>
+                  </div>
                 </div>
               </article>
             ))}
@@ -325,6 +370,73 @@ function Services() {
         </div>
       </div>
     </section>
+
+    {detailModal && (
+      <div
+        className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 p-3 backdrop-blur-sm sm:p-4"
+        onMouseDown={(event) => {
+          if (event.target === event.currentTarget) setActiveDetails(null)
+        }}
+      >
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="service-details-modal-title"
+          className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-white shadow-2xl"
+        >
+          <button
+            type="button"
+            onClick={() => setActiveDetails(null)}
+            aria-label={`Close ${detailModal.title} details`}
+            className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-500 shadow-sm transition hover:bg-slate-200 hover:text-slate-800 sm:right-5 sm:top-5"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5" aria-hidden="true">
+              <path d="m6 6 12 12M18 6 6 18" strokeLinecap="round" />
+            </svg>
+          </button>
+
+          <div className="max-h-[90dvh] overflow-y-auto px-5 py-9 sm:px-10 sm:py-10 lg:px-12">
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-teal-700">Evorise</p>
+            <h2 id="service-details-modal-title" className="mt-3 pr-12 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+              {detailModal.title}
+            </h2>
+            <p className="mt-4 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
+              {detailModal.description}
+            </p>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {detailModal.items.map((course, index) => (
+                <article key={course.title} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                  <div className="flex items-start gap-4">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal-700 text-white">
+                      <DetailIcon type={course.icon} />
+                    </span>
+                    <div className="min-w-0">
+                      <p className="text-xs font-bold text-teal-700">0{index + 1}</p>
+                      <h3 className="mt-1 text-lg font-bold leading-6 text-slate-950">{course.title}</h3>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-sm leading-6 text-slate-600">{course.description}</p>
+                </article>
+              ))}
+            </div>
+
+            <button
+              type="button"
+              onClick={() => {
+                setActiveDetails(null)
+                openModal()
+              }}
+              className="mt-8 w-full rounded-xl bg-[#151515] px-6 py-4 text-sm font-bold uppercase tracking-[0.14em] text-white transition-colors duration-300 hover:bg-teal-700"
+            >
+              Talk to the Evorise team
+            </button>
+
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   )
 }
 

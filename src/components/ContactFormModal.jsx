@@ -372,9 +372,7 @@ export function ContactFormModal() {
           <div className="relative z-10 flex h-full flex-col">
             <div>
               <p className="text-xs font-bold tracking-[0.24em] text-teal-200">EVORISE</p>
-              <p className="mt-1 text-xs font-medium uppercase tracking-[0.18em] text-white/60">
-                Digital growth partner
-              </p>
+              
             </div>
 
             <div className="mt-6 max-w-md lg:mt-12">

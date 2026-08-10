@@ -342,7 +342,7 @@ function Footer() {
   return (
     <footer className="relative overflow-hidden bg-[#f4fbf9] px-4 py-8 sm:px-6 sm:py-16 lg:px-10">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-2 items-start gap-x-5 gap-y-8 rounded-2xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-200/60 sm:gap-x-8 sm:gap-y-10 sm:rounded-[32px] sm:p-8 md:grid-cols-2 lg:p-10 xl:grid-cols-[1.6fr_0.8fr_0.65fr_1.1fr] xl:gap-10 xl:p-12">
+        <div className="grid grid-cols-2 items-start gap-x-5 gap-y-8 rounded-2xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-200/60 sm:gap-x-8 sm:gap-y-10 sm:rounded-[32px] sm:p-8 md:grid-cols-2 lg:p-10 xl:grid-cols-[1.45fr_0.75fr_0.55fr_1.45fr] xl:gap-10 xl:p-12">
           <div className="col-span-2 space-y-4 sm:space-y-5 md:col-span-2 xl:col-span-1">
             <div>
               <p className="text-3xl font-extrabold tracking-tight text-slate-950">EVORISE</p>
@@ -415,9 +415,9 @@ function Footer() {
             </div>
           </div>
 
-          <div className="col-span-2 rounded-2xl border border-slate-200/70 bg-slate-50/90 p-4 shadow-sm shadow-slate-200/50 sm:p-6 md:col-span-2 xl:col-span-1">
+          <div className="col-span-2 rounded-2xl border border-slate-200/70 bg-slate-50/90 p-4 shadow-sm shadow-slate-200/50 sm:p-5 md:col-span-2 xl:col-span-1">
             <h3 className="text-xl font-bold text-slate-950">Contact Us</h3>
-            <div className="mt-4 grid grid-cols-2 gap-x-5 gap-y-3 text-sm leading-6 text-slate-600 sm:mt-6 sm:gap-y-4">
+            <div className="mt-4 grid grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] gap-x-3 gap-y-3 text-sm leading-6 text-slate-600 sm:mt-6 sm:gap-y-4">
               <div>
                 <p className="font-semibold text-slate-900">Location</p>
                 <p>Kochi, Kerala, India</p>
@@ -429,15 +429,14 @@ function Footer() {
               </div>
               <div>
                 <p className="font-semibold text-slate-900">Email</p>
-                <a href="mailto:info@evorise.in" className="transition hover:text-teal-800">
-                  info@evorise.in
+                <a href="mailto:evorise.info@gmail.com" className="whitespace-nowrap transition hover:text-teal-800">
+                  evorise.info@gmail.com
                 </a>
               </div>
               <div>
                 <p className="font-semibold text-slate-900">Phone</p>
-                <a href="tel:+919037071916" className="transition hover:text-teal-800">
-                   +91 90370 71916
-
+                <a href="tel:+919037071916" className="whitespace-nowrap transition hover:text-teal-800">
+                  +91 90370 71916
                 </a>
               </div>
             </div>

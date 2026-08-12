@@ -122,31 +122,3 @@ h6 {
     line-height: 1.15;
   }
 }
-
-@media (max-width: 639px) and (prefers-color-scheme: dark) {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  [class*="text-[#111111]"],
-  [class*="text-[#151515]"],
-  [class*="text-slate-950"],
-  [class*="text-slate-900"],
-  [class*="text-slate-800"],
-  [class*="text-slate-700"],
-  [class*="text-black"] {
-    color: #f8fafc;
-  }
-
-  p,
-  [class*="text-slate-600"],
-  [class*="text-slate-500"] {
-    color: #d1d5db;
-  }
-
-  .mobile-hero-word {
-    -webkit-text-stroke-color: #f8fafc;
-  }
-}

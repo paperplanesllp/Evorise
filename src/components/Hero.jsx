@@ -18,7 +18,7 @@ function Hero() {
             style={outlineTextStyle}
           >
             <span className="sm:hidden">Learn.</span>
-            <span className="hidden sm:inline">Learn It.</span>
+            <span className="hidden sm:inline">Learn </span>
           </span>
 
           <span
@@ -26,7 +26,7 @@ function Hero() {
             style={outlineTextStyle}
           >
             <span className="sm:hidden">Build.</span>
-            <span className="hidden sm:inline">Build It.</span>
+            <span className="hidden sm:inline">Build </span>
           </span>
 
           <span
@@ -34,7 +34,7 @@ function Hero() {
             style={outlineTextStyle}
           >
             <span className="sm:hidden">Automate.</span>
-            <span className="hidden sm:inline">Automate It.</span>
+            <span className="hidden sm:inline">Automate .</span>
           </span>
         </div>
 

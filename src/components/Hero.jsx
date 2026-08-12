@@ -12,9 +12,9 @@ function Hero() {
       className="overflow-hidden bg-[#f4fbf9] px-5 pb-12 pt-24 sm:min-h-screen sm:px-8 sm:pb-20 sm:pt-32 lg:px-12"
     >
       <div className="mx-auto w-full max-w-[1800px] text-center">
-        <div className="mx-auto flex max-w-[1600px] flex-col items-center justify-center gap-1 text-[clamp(2.5rem,12vw,3.5rem)] font-bold leading-[1.08] tracking-[-0.03em] sm:flex-row sm:flex-wrap sm:gap-8 sm:text-4xl md:text-7xl lg:flex-nowrap lg:gap-16 lg:text-[90px]">
+        <div className="mobile-hero-words mx-auto flex max-w-[1600px] flex-col items-center justify-center gap-1 text-[clamp(2.5rem,12vw,3.5rem)] font-bold leading-[1.08] tracking-[-0.03em] sm:flex-row sm:flex-wrap sm:gap-8 sm:text-4xl md:text-7xl lg:flex-nowrap lg:gap-16 lg:text-[90px]">
           <span
-            className="cursor-pointer whitespace-nowrap text-transparent transition-all duration-500 hover:text-black"
+            className="mobile-hero-word cursor-pointer whitespace-nowrap text-transparent transition-all duration-500 hover:text-black"
             style={outlineTextStyle}
           >
             <span className="sm:hidden">Learn.</span>
@@ -22,7 +22,7 @@ function Hero() {
           </span>
 
           <span
-            className="cursor-pointer whitespace-nowrap text-transparent transition-all duration-500 hover:text-black"
+            className="mobile-hero-word cursor-pointer whitespace-nowrap text-transparent transition-all duration-500 hover:text-black"
             style={outlineTextStyle}
           >
             <span className="sm:hidden">Build.</span>
@@ -30,7 +30,7 @@ function Hero() {
           </span>
 
           <span
-            className="cursor-pointer whitespace-nowrap text-transparent transition-all duration-500 hover:text-black"
+            className="mobile-hero-word cursor-pointer whitespace-nowrap text-transparent transition-all duration-500 hover:text-black"
             style={outlineTextStyle}
           >
             <span className="sm:hidden">Automate.</span>

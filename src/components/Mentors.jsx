@@ -1,4 +1,4 @@
-import gokulImage from '../assets/Gokul.jpeg'
+import gokulImage from '../assets/goku.jpeg'
 
 const mentors = [
   {
